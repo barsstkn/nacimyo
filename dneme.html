@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naci Topçuoğlu MYO - Gaziantep Üniversitesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d3748;
+            --accent: #3182ce;
+            --text: #1f2937;
+            --bg-light: #f8fafc;
+            --nav-bg: #1a365d;
+            --nav-text: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: var(--nav-bg);
+            box-shadow: none;
+            height: auto;
+        }
+
+        .header-main {
+            padding: 0;
+            height: auto;
+            background: var(--nav-bg);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            background: var(--nav-bg);
+            margin-top: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 90px;
+            width: 90px;
+            transition: var(--transition);
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            background: white;
+            padding: 3px;
+        }
+
+        .logo-text {
+            border-left: 3px solid rgba(255, 255, 255, 0.3);
+            padding-left: 1.5rem;
+        }
+
+        .logo-text h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0px;
+            line-height: 1.2;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .logo-text p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--nav-bg);
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+        }
+
+        .nav-menu > li {
+            position: relative;
+        }
+
+        .nav-menu > li > a {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            color: var(--nav-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu > li > a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--nav-text);
+        }
+
+        .nav-menu > li > a.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--nav-text);
+        }
+
+        /* Dropdown */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--nav-bg);
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-menu > li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            color: var(--nav-text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 1.5rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+            }
+
+            .nav-menu > li > a {
+                padding: 1rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                background: rgba(255, 255, 255, 0.05);
+                display: none;
+                transform: none;
+                padding: 0;
+            }
+
+            .nav-menu > li:hover .dropdown-menu {
+                display: block;
+            }
+
+            .logo-container {
+                padding: 1rem;
+                margin-top: 0;
+            }
+
+            .logo {
+                gap: 1rem;
+            }
+
+            .logo img {
+                height: 70px;
+                width: 70px;
+            }
+
+            .logo-text {
+                padding-left: 1rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.6rem;
+            }
+
+            .logo-text p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 135px;
+            height: calc(100vh - 135px);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--nav-bg);
+        }
+
+        .hero-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            line-height: 0;
+            font-size: 0;
+        }
+
+        .hero-main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            margin: 0;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                margin-top: 115px;
+                height: calc(100vh - 115px);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            color: var(--text);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* News Section Styles */
+        .news-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .news-column {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .column-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .news-item {
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .news-date {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .news-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .news-item p {
+            font-size: 0.95rem;
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            gap: 0.8rem;
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .news-column {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Stats Section Styles */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .stat-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .stat-content h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .stat-content p {
+            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .quick-link-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: var(--primary);
+        }
+
+        .quick-link-card:hover h3,
+        .quick-link-card:hover p {
+            color: white;
+        }
+
+        .quick-link-card:hover .quick-link-icon {
+            background: white;
+        }
+
+        .quick-link-card:hover .quick-link-icon i {
+            color: var(--primary);
+        }
+
+        .quick-link-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: var(--transition);
+        }
+
+        .quick-link-icon i {
+            font-size: 1.8rem;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .quick-link-card h3 {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .quick-link-card p {
+            color: var(--text);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        @media (max-width: 1024px) {
+            .quick-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Slider Styles */
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 10;
+        }
+
+        .slider-nav button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+
+        .slider-nav button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-list i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 0.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Login Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-20px);
+            animation: modalSlideIn 0.3s ease forwards;
+        }
+
+        @keyframes modalSlideIn {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.1);
+        }
+
+        .login-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .forgot-password {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 576px) {
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-main">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img src="https://pbs.twimg.com/profile_images/1023869108474064896/GehvVKTY_400x400.jpg" alt="GAÜN Logo">
+                    <div class="logo-text">
+                        <h1>NACİ TOPÇUOĞLU</h1>
+                        <p>Meslek Yüksekokulu</p>
+                    </div>
+                </a>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#" class="active">ANASAYFA</a></li>
+                        <li>
+                            <a href="#">HAKKIMIZDA</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Tarihçe</a></li>
+                                <li><a href="#">Misyon ve Vizyon</a></li>
+                                <li><a href="#">Yönetim</a></li>
+                                <li><a href="#">Organizasyon Şeması</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">BÖLÜMLER</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Tekstil Teknolojisi</a></li>
+                                <li><a href="#">Moda Tasarımı</a></li>
+                                <li><a href="#">Ayakkabı Tasarım ve Üretimi</a></li>
+                                <li><a href="#">Deri Teknolojisi</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">AKADEMİK</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Akademik Kadro</a></li>
+                                <li><a href="#">Akademik Takvim</a></li>
+                                <li><a href="#">Ders Programı</a></li>
+                                <li><a href="#">Sınav Programı</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" id="studentLoginBtn">ÖĞRENCİ</a></li>
+                        <li><a href="#">PERSONEL</a></li>
+                        <li><a href="#">İLETİŞİM</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="slider">
+                <div class="slide active">
+                    <img src="https://ntmyo.gantep.edu.tr/files/slider/teknofest2025.png" alt="NTMYO Teknofest">
+                </div>
+                <div class="slide">
+                    <img src="https://ntmyo.gantep.edu.tr/files/slider/sosyalmedya_ins.png" alt="NTMYO Sosyal Medya">
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button class="prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="slider-dots"></div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hızlı Erişim</h2>
+                <p>Sık Kullanılan Bağlantılar</p>
+            </div>
+            <div class="quick-links-grid">
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Duyurular</h3>
+                    <p>Güncel Duyuru ve İlanlar</p>
+                </a>
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Akademik Personel</h3>
+                    <p>Akademik Kadromuz</p>
+                </a>
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>İşyeri Eğitim Portalı</h3>
+                    <p>Staj ve İşyeri Eğitimi</p>
+                </a>
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Mezun Portalı</h3>
+                    <p>Mezunlarımız İçin</p>
+                </a>
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Aday Öğrenci</h3>
+                    <p>E-Kayıt İşlemleri</p>
+                </a>
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>GİMER</h3>
+                    <p>Gaziantep Üniversitesi GİMER</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Duyuru ve Haberler</h2>
+                <p>Son Gelişmeler ve Önemli Bilgilendirmeler</p>
+            </div>
+            
+            <div class="news-grid">
+                <!-- Duyurular -->
+                <div class="news-column">
+                    <h3 class="column-title">
+                        <i class="fas fa-bullhorn"></i>
+                        Duyurular
+                    </h3>
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-date">15 Mart 2024</div>
+                            <h4>2024 Bahar Dönemi Vize Sınav Programı</h4>
+                            <p>2023-2024 Eğitim Öğretim Yılı Bahar Dönemi Vize Sınavları 1-12 Nisan tarihleri arasında yapılacaktır.</p>
+                            <a href="#" class="read-more">Detaylı Bilgi <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">10 Mart 2024</div>
+                            <h4>Staj Başvuruları Başladı</h4>
+                            <p>2024 Yaz dönemi staj başvuruları başlamıştır. Son başvuru tarihi 30 Nisan 2024'tür.</p>
+                            <a href="#" class="read-more">Detaylı Bilgi <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Haberler -->
+                <div class="news-column">
+                    <h3 class="column-title">
+                        <i class="fas fa-newspaper"></i>
+                        Haberler
+                    </h3>
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-date">12 Mart 2024</div>
+                            <h4>TEKNOFEST 2024 Başarımız</h4>
+                            <p>Öğrencilerimiz TEKNOFEST 2024'te Tekstil Teknolojileri kategorisinde birincilik ödülü kazandı.</p>
+                            <a href="#" class="read-more">Detaylı Bilgi <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">5 Mart 2024</div>
+                            <h4>Sektör Buluşması Etkinliği</h4>
+                            <p>Tekstil sektörünün önde gelen firmaları ile öğrencilerimiz kampüsümüzde buluştu.</p>
+                            <a href="#" class="read-more">Detaylı Bilgi <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>İletişim Bilgileri</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Naci Topçuoğlu Meslek Yüksekokulu, Gaziantep Üniversitesi, Şehitkamil/Gaziantep</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+90 342 360 1200</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>ntmyo@gantep.edu.tr</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Hızlı Erişim</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Akademik Takvim</a></li>
+                        <li><a href="#">Ders Programı</a></li>
+                        <li><a href="#">Sınav Programı</a></li>
+                        <li><a href="#">Formlar ve Belgeler</a></li>
+                        <li><a href="#">Yönetmelikler</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Bölümlerimiz</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Tekstil Teknolojisi</a></li>
+                        <li><a href="#">Moda Tasarımı</a></li>
+                        <li><a href="#">Ayakkabı Tasarım ve Üretimi</a></li>
+                        <li><a href="#">Deri Teknolojisi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Sosyal Medya</h3>
+                    <div class="social-links">
+                        <a href="https://facebook.com" class="social-link" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com" class="social-link" target="_blank" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com" class="social-link" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com" class="social-link" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://youtube.com" class="social-link" target="_blank" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Naci Topçuoğlu Meslek Yüksekokulu. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Öğrenci Girişi</h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="studentNumber">Öğrenci Numarası</label>
+                    <input type="text" id="studentNumber" name="studentNumber" required placeholder="Öğrenci numaranızı giriniz">
+                </div>
+                <div class="form-group">
+                    <label for="password">Şifre</label>
+                    <input type="password" id="password" name="password" required placeholder="Şifrenizi giriniz">
+                </div>
+                <button type="submit" class="login-btn">Giriş Yap</button>
+                <div class="forgot-password">
+                    <a href="#">Şifremi Unuttum</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Slider functionality
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const dotsContainer = document.querySelector('.slider-dots');
+        let currentSlide = 0;
+
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function updateSlides() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlides();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlides();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlides();
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Auto slide
+        setInterval(nextSlide, 5000);
+
+        // Login Modal Functionality
+        const loginModal = document.getElementById('loginModal');
+        const studentLoginBtn = document.getElementById('studentLoginBtn');
+        const closeModalBtn = document.querySelector('.close-modal');
+        const loginForm = document.getElementById('loginForm');
+
+        studentLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.classList.add('active');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            loginModal.classList.remove('active');
+        });
+
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+            }
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const studentNumber = document.getElementById('studentNumber').value;
+            const password = document.getElementById('password').value;
+            
+            // Burada giriş işlemleri yapılacak
+            console.log('Öğrenci Numarası:', studentNumber);
+            console.log('Şifre:', password);
+            
+            // Örnek başarılı giriş
+            alert('Giriş başarılı!');
+            loginModal.classList.remove('active');
+            loginForm.reset();
+        });
+    </script>
+</body>
+</html>
