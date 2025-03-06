@@ -191,18 +191,56 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--primary);
+            color: white;
             cursor: pointer;
             padding: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--accent);
         }
 
         @media (max-width: 768px) {
+            .header-main {
+                position: relative;
+            }
+
+            .logo-container {
+                padding: 0.8rem;
+            }
+
+            .logo img {
+                height: 60px;
+                width: 60px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+
+            .logo-text p {
+                font-size: 0.8rem;
+            }
+
             .mobile-menu-btn {
                 display: block;
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 100;
             }
 
             nav {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--nav-bg);
+                padding: 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
 
             nav.active {
@@ -211,48 +249,148 @@
 
             .nav-menu {
                 flex-direction: column;
+                padding: 0.5rem 0;
+            }
+
+            .nav-menu > li {
+                width: 100%;
             }
 
             .nav-menu > li > a {
-                padding: 1rem;
+                padding: 1rem 1.5rem;
+                justify-content: space-between;
+            }
+
+            .nav-menu > li > a::after {
+                content: '\f107';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                transition: transform 0.3s ease;
+            }
+
+            .nav-menu > li.active > a::after {
+                transform: rotate(180deg);
             }
 
             .dropdown-menu {
                 position: static;
-                background: rgba(255, 255, 255, 0.05);
-                display: none;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
                 transform: none;
+                display: none;
                 padding: 0;
+                background: rgba(255, 255, 255, 0.05);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
             }
 
-            .nav-menu > li:hover .dropdown-menu {
+            .nav-menu > li.active .dropdown-menu {
                 display: block;
+                max-height: 500px;
             }
 
-            .logo-container {
-                padding: 1rem;
-                margin-top: 0;
+            .dropdown-menu a {
+                padding: 0.8rem 2rem;
             }
 
-            .logo {
+            /* Hero Section Mobile */
+            .hero {
+                margin-top: 80px;
+                height: calc(100vh - 80px);
+            }
+
+            /* News Section Mobile */
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .news-column {
+                padding: 1.2rem;
+            }
+
+            /* Features Section Mobile */
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .quick-links-grid {
+                grid-template-columns: 1fr;
                 gap: 1rem;
             }
 
-            .logo img {
-                height: 70px;
-                width: 70px;
+            .quick-link-card {
+                padding: 1.5rem;
             }
 
-            .logo-text {
-                padding-left: 1rem;
+            /* Footer Mobile */
+            .footer {
+                padding: 3rem 0 1.5rem;
             }
 
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-column {
+                text-align: center;
+            }
+
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .contact-list li {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            /* Modal Mobile */
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .form-group input {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+
+        @media (max-width: 480px) {
             .logo-text h1 {
-                font-size: 1.6rem;
+                font-size: 1rem;
             }
 
             .logo-text p {
-                font-size: 0.9rem;
+                font-size: 0.7rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .news-item h4 {
+                font-size: 1rem;
+            }
+
+            .slider-nav button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .dot {
+                width: 8px;
+                height: 8px;
             }
         }
 
@@ -993,7 +1131,7 @@
                             </ul>
                         </li>
                         <li><a href="#" id="studentLoginBtn">ÖĞRENCİ</a></li>
-                        <li><a href="#">PERSONEL</a></li>
+                        <li><a href="#" id="academicLoginBtn">PERSONEL</a></li>
                         <li><a href="#">İLETİŞİM</a></li>
                     </ul>
                 </nav>
@@ -1223,12 +1361,84 @@
         </div>
     </div>
 
+    <!-- Academic Login Modal -->
+    <div class="modal" id="academicModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Akademisyen Girişi</h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="login-form" id="academicForm">
+                <div class="form-group">
+                    <label for="academicId">Sicil Numarası</label>
+                    <input type="text" id="academicId" name="academicId" required placeholder="Sicil numaranızı giriniz">
+                </div>
+                <div class="form-group">
+                    <label for="academicPassword">Şifre</label>
+                    <input type="password" id="academicPassword" name="academicPassword" required placeholder="Şifrenizi giriniz">
+                </div>
+                <button type="submit" class="login-btn">Giriş Yap</button>
+                <div class="forgot-password">
+                    <a href="#">Şifremi Unuttum</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // Mobile Menu Functionality
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('.nav-menu');
+        const nav = document.querySelector('nav');
+        const menuItems = document.querySelectorAll('.nav-menu > li');
 
         mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            nav.classList.toggle('active');
+            // Close all dropdowns when menu is closed
+            if (!nav.classList.contains('active')) {
+                menuItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
+
+        // Handle dropdown menus on mobile
+        menuItems.forEach(item => {
+            if (item.querySelector('.dropdown-menu')) {
+                item.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        // Close other dropdowns
+                        menuItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+                        item.classList.toggle('active');
+                    }
+                });
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                nav.classList.remove('active');
+                menuItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
+
+        // Close mobile menu when window is resized above mobile breakpoint
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                nav.classList.remove('active');
+                menuItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
         });
 
         // Slider functionality
@@ -1280,22 +1490,36 @@
 
         // Login Modal Functionality
         const loginModal = document.getElementById('loginModal');
+        const academicModal = document.getElementById('academicModal');
         const studentLoginBtn = document.getElementById('studentLoginBtn');
-        const closeModalBtn = document.querySelector('.close-modal');
+        const academicLoginBtn = document.getElementById('academicLoginBtn');
+        const closeModalBtns = document.querySelectorAll('.close-modal');
         const loginForm = document.getElementById('loginForm');
+        const academicForm = document.getElementById('academicForm');
 
         studentLoginBtn.addEventListener('click', (e) => {
             e.preventDefault();
             loginModal.classList.add('active');
         });
 
-        closeModalBtn.addEventListener('click', () => {
-            loginModal.classList.remove('active');
+        academicLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            academicModal.classList.add('active');
         });
 
-        loginModal.addEventListener('click', (e) => {
+        closeModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                loginModal.classList.remove('active');
+                academicModal.classList.remove('active');
+            });
+        });
+
+        window.addEventListener('click', (e) => {
             if (e.target === loginModal) {
                 loginModal.classList.remove('active');
+            }
+            if (e.target === academicModal) {
+                academicModal.classList.remove('active');
             }
         });
 
@@ -1304,14 +1528,29 @@
             const studentNumber = document.getElementById('studentNumber').value;
             const password = document.getElementById('password').value;
             
-            // Burada giriş işlemleri yapılacak
+            // Burada öğrenci giriş işlemleri yapılacak
             console.log('Öğrenci Numarası:', studentNumber);
             console.log('Şifre:', password);
             
             // Örnek başarılı giriş
-            alert('Giriş başarılı!');
+            alert('Öğrenci girişi başarılı!');
             loginModal.classList.remove('active');
             loginForm.reset();
+        });
+
+        academicForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const academicId = document.getElementById('academicId').value;
+            const academicPassword = document.getElementById('academicPassword').value;
+            
+            // Burada akademisyen giriş işlemleri yapılacak
+            console.log('Sicil Numarası:', academicId);
+            console.log('Şifre:', academicPassword);
+            
+            // Örnek başarılı giriş
+            alert('Akademisyen girişi başarılı!');
+            academicModal.classList.remove('active');
+            academicForm.reset();
         });
     </script>
 </body>
