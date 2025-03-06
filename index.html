@@ -298,7 +298,7 @@
             /* Hero Section Mobile */
             .hero {
                 margin-top: 80px;
-                height: calc(100vh - 80px);
+                height: 300px;
             }
 
             /* News Section Mobile */
@@ -383,14 +383,19 @@
             }
 
             .slider-nav button {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            .slider-dots {
+                bottom: 0.5rem;
             }
 
             .dot {
-                width: 8px;
-                height: 8px;
+                width: 6px;
+                height: 6px;
+                margin: 0 4px;
             }
         }
 
@@ -412,22 +417,89 @@
             font-size: 0;
         }
 
-        .hero-main-image {
+        .slider {
+            position: relative;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-            margin: 0;
-            padding: 0;
-            vertical-align: top;
+            overflow: hidden;
         }
 
-        @media (max-width: 768px) {
-            .hero {
-                margin-top: 115px;
-                height: calc(100vh - 115px);
-            }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 10;
+        }
+
+        .slider-nav button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+
+        .slider-nav button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
         }
 
         /* Features Section */
@@ -748,92 +820,6 @@
             .quick-links-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Slider Styles */
-        .slider {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: space-between;
-            padding: 0 2rem;
-            z-index: 10;
-        }
-
-        .slider-nav button {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
-            backdrop-filter: blur(5px);
-        }
-
-        .slider-nav button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        .slider-dots {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 1rem;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .dot.active {
-            background: white;
-            transform: scale(1.2);
         }
 
         /* Footer Styles */
