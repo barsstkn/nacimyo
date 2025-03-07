@@ -140,7 +140,11 @@
       }
 
       /* Dropdown */
-      .dropdown-menu {
+      .dropdown-menu
+      {
+        position: relative;
+      }
+      .dropdown {
         position: absolute;
         list-style: none;
         top: 100%;
@@ -154,8 +158,12 @@
         padding: 0.5rem;
         border-top: 2px solid rgba(255, 255, 255, 0.1);
       }
-
-      .nav-menu > li:hover .dropdown-menu {
+.dropdown-menu:hover .dropdown{
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .nav-menu > li:hover .dropdown-menu{
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
