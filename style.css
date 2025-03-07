@@ -153,6 +153,8 @@ nav {
   padding: 0.5rem;
   border-top: 2px solid rgba(255, 255, 255, 0.1);
   list-style-type: none;
+  overflow-y: auto; /* Aşağıya taşarsa kaydırma çubuğu eklensin */
+  max-height: 80vh; /* Ekranın %80'inden büyük olmasın */
 }
 
 .nav-menu > li:hover .dropdown-menu {
