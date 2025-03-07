@@ -140,7 +140,11 @@
       }
 
       /* Dropdown */
-      .dropdown-menu {
+      .dropdown-menu
+      {
+        position: relative;
+      }
+      .dropdown {
         position: absolute;
         list-style: none;
         top: 100%;
