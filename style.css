@@ -152,6 +152,7 @@ nav {
   transition: var(--transition);
   padding: 0.5rem;
   border-top: 2px solid rgba(255, 255, 255, 0.1);
+  list-style-type: none;
 }
 
 .nav-menu > li:hover .dropdown-menu {
