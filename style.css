@@ -997,69 +997,6 @@ nav {
   transform: scale(1.1);
 }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-group label {
-  font-size: 0.9rem;
-  color: var(--text);
-  font-weight: 500;
-}
-
-.form-group input {
-  padding: 0.8rem 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: var(--transition);
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.1);
-}
-
-.login-btn {
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 1rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.login-btn:hover {
-  background: var(--accent);
-  transform: translateY(-2px);
-}
-
-.forgot-password {
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-.forgot-password a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.forgot-password a:hover {
-  text-decoration: underline;
-}
 
 @media (max-width: 576px) {
   .modal-content {
