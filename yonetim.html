@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Naci Topçuoğlu MYO - Gaziantep Üniversitesi</title>
+    <title>Yönetim Kadrosu - Naci Topçuoğlu MYO</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -13,6 +13,274 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .page-container {
+        display: flex;
+        margin-top: 100px;
+        background: #f5f7fa;
+        min-height: calc(100vh - 100px);
+        padding: 40px;
+        gap: 40px;
+      }
+
+      .side-menu {
+        width: 220px;
+        min-width: 220px;
+        background: white;
+        padding: 20px 0;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .side-menu h2 {
+        color: #2d3748;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 0 20px;
+        margin-bottom: 15px;
+      }
+
+      .side-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .side-menu li {
+        margin: 2px 0;
+      }
+
+      .side-menu a {
+        color: #4a5568;
+        text-decoration: none;
+        display: block;
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+      }
+
+      .side-menu a:hover {
+        background: #edf2f7;
+        color: #2b6cb0;
+      }
+
+      .side-menu a.active {
+        background: #ebf8ff;
+        color: #2b6cb0;
+        border-left: 3px solid #2b6cb0;
+        font-weight: 500;
+      }
+
+      .main-content {
+        flex: 1;
+        padding: 0;
+      }
+
+      .page-title {
+        margin-bottom: 40px;
+      }
+
+      .page-title h1 {
+        color: #1a202c;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .page-title p {
+        color: #718096;
+        font-size: 1.1rem;
+      }
+
+      .management-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+      }
+
+      .management-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .management-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 320px;
+        overflow: hidden;
+        background: #f7fafc;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 24px;
+      }
+
+      .card-content h3 {
+        color: #2d3748;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .card-content .title {
+        color: #718096;
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #4a5568;
+        font-size: 0.95rem;
+      }
+
+      .contact-item i {
+        color: #2b6cb0;
+        font-size: 1.1rem;
+      }
+
+      .contact-item a {
+        color: #2b6cb0;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .contact-item a:hover {
+        color: #2c5282;
+      }
+
+      @media (max-width: 768px) {
+        .page-container {
+          flex-direction: column;
+          padding: 20px;
+          gap: 20px;
+        }
+
+        .side-menu {
+          width: 100%;
+          min-width: auto;
+        }
+
+        .main-content {
+          padding: 0;
+        }
+
+        .management-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .page-banner {
+        position: relative;
+        height: 250px;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.gantep.edu.tr/upload/photos/1920x1080/2023/12/1702897357_1.jpg') center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0 40px 40px;
+        margin-top: 80px;
+      }
+
+      .banner-title {
+        color: #fff;
+        font-size: 2.8rem;
+        font-weight: 600;
+        margin: 0 0 15px 0;
+        text-align: left;
+      }
+
+      .breadcrumb {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .breadcrumb a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.95rem;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+      }
+
+      .breadcrumb a:hover {
+        opacity: 1;
+      }
+
+      .breadcrumb .separator {
+        color: #fff;
+        opacity: 0.5;
+        margin: 0 5px;
+      }
+
+      .breadcrumb .current {
+        color: #fff;
+        opacity: 0.9;
+        font-size: 0.95rem;
+      }
+
+      .page-container {
+        margin-top: 0;
+        background: #f5f7fa;
+        min-height: calc(100vh - 280px);
+        padding: 40px;
+        gap: 40px;
+        display: flex;
+      }
+
+      @media (max-width: 768px) {
+        .page-banner {
+          height: 200px;
+          padding: 0 20px 30px;
+        }
+
+        .banner-title {
+          font-size: 2.2rem;
+        }
+
+        .page-container {
+          flex-direction: column;
+          padding: 20px;
+          gap: 20px;
+        }
+
+        .side-menu {
+          width: 100%;
+          min-width: auto;
+        }
+
+        .main-content {
+          padding: 0;
+        }
+
+        .management-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -203,6 +471,107 @@
         </div>
       </div>
     </header>
+
+    <div class="page-banner">
+      <h1 class="banner-title">YÖNETİM</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Anasayfa</a>
+        <span class="separator">/</span>
+        <span class="current">Yönetim</span>
+      </div>
+    </div>
+
+    <div class="page-container">
+      <aside class="side-menu">
+        <h2>Hakkımızda</h2>
+        <ul>
+          <li><a href="yonetim.html" class="active">Yönetim Kadrosu</a></li>
+          <li><a href="#">Genel Bilgiler</a></li>
+          <li><a href="#">Faaliyet Raporları</a></li>
+          <li><a href="#">Misyon</a></li>
+          <li><a href="#">Vizyon</a></li>
+          <li><a href="#">Kurallar</a></li>
+          <li><a href="#">Fiziki Alt Yapı</a></li>
+          <li><a href="#">Organizasyon Şeması</a></li>
+          <li><a href="#">ARGE/Kalite/Agredidasyon</a></li>
+          <li><a href="#">TS EN ISO 9001:2015</a></li>
+          <li><a href="#">TS EN ISO/IEC 17025:2017</a></li>
+          <li><a href="#">Naci Topçuoğlu Kimdir?</a></li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-title">
+          <h1>Yönetim Kadrosu</h1>
+          <p>Naci Topçuoğlu Meslek Yüksekokulu Yönetim Ekibi</p>
+        </div>
+        
+        <div class="management-grid">
+          <!-- Müdür -->
+          <div class="management-card">
+            <div class="card-image">
+              <img src="path/to/mudur-photo.jpg" alt="Müdür">
+            </div>
+            <div class="card-content">
+              <h3>Prof. Dr. Ad Soyad</h3>
+              <div class="title">Müdür</div>
+              <div class="contact">
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <a href="mailto:mudur@gantep.edu.tr">mudur@gantep.edu.tr</a>
+                </div>
+                <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <a href="tel:+903423601200">+90 342 360 1200</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Müdür Yardımcısı -->
+          <div class="management-card">
+            <div class="card-image">
+              <img src="path/to/mudur-yrd-photo.jpg" alt="Müdür Yardımcısı">
+            </div>
+            <div class="card-content">
+              <h3>Doç. Dr. Ad Soyad</h3>
+              <div class="title">Müdür Yardımcısı</div>
+              <div class="contact">
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <a href="mailto:muduryrd@gantep.edu.tr">muduryrd@gantep.edu.tr</a>
+                </div>
+                <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <a href="tel:+903423601201">+90 342 360 1201</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Yüksekokul Sekreteri -->
+          <div class="management-card">
+            <div class="card-image">
+              <img src="path/to/sekreter-photo.jpg" alt="Yüksekokul Sekreteri">
+            </div>
+            <div class="card-content">
+              <h3>Ad Soyad</h3>
+              <div class="title">Yüksekokul Sekreteri</div>
+              <div class="contact">
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <a href="mailto:sekreter@gantep.edu.tr">sekreter@gantep.edu.tr</a>
+                </div>
+                <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <a href="tel:+903423601202">+90 342 360 1202</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
 
     <footer class="footer">
       <div class="container">
