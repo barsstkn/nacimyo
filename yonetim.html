@@ -12,73 +12,1075 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
     <style>
-      .page-container {
-        display: flex;
-        margin-top: 100px;
-        background: #f5f7fa;
-        min-height: calc(100vh - 100px);
-        padding: 40px;
-        gap: 40px;
-      }
-
-      .side-menu {
-        width: 220px;
-        min-width: 220px;
-        background: white;
-        padding: 20px 0;
-        border-radius: 12px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      }
-
-      .side-menu h2 {
-        color: #2d3748;
-        font-size: 1.1rem;
-        font-weight: 600;
-        padding: 0 20px;
-        margin-bottom: 15px;
-      }
-
-      .side-menu ul {
-        list-style: none;
-        padding: 0;
+      /* Buraya CSS kodlarınızı yapıştırın */
+      * {
         margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      .side-menu li {
-        margin: 2px 0;
+      :root {
+        --primary: #1a365d;
+        --secondary: #2d3748;
+        --accent: #3182ce;
+        --text: #1f2937;
+        --bg-light: #f8fafc;
+        --nav-bg: #1a365d;
+        --nav-text: #ffffff;
+        --transition: all 0.3s ease;
       }
 
-      .side-menu a {
-        color: #4a5568;
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: var(--bg-light);
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background: var(--nav-bg);
+        box-shadow: none;
+        height: auto;
+      }
+
+      .header-main {
+        padding: 0;
+        height: auto;
+        background: var(--nav-bg);
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+        background: var(--nav-bg);
+        margin-top: 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
         text-decoration: none;
-        display: block;
-        padding: 8px 20px;
+      }
+
+      .logo img {
+        height: 90px;
+        width: 90px;
+        transition: var(--transition);
+        border-radius: 50%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        background: white;
+        padding: 3px;
+      }
+
+      .logo-text {
+        border-left: 3px solid rgba(255, 255, 255, 0.3);
+        padding-left: 1.5rem;
+      }
+
+      .logo-text h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        letter-spacing: 0px;
+        line-height: 1.2;
+        text-transform: uppercase;
+        margin-bottom: 0.3rem;
+      }
+
+      .logo-text p {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Navigation */
+      nav {
+        background: var(--nav-bg);
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+      }
+
+      .nav-menu > li {
+        position: relative;
+      }
+
+      .nav-menu > li > a {
+        display: flex;
+        align-items: center;
+        padding: 0.8rem 1.5rem;
+        color: var(--nav-text);
+        text-decoration: none;
+        font-weight: 500;
         font-size: 0.9rem;
-        transition: all 0.2s ease;
-        border-left: 3px solid transparent;
+        transition: var(--transition);
+        position: relative;
       }
 
-      .side-menu a:hover {
-        background: #edf2f7;
-        color: #2b6cb0;
+      .nav-menu > li > a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--nav-text);
       }
 
-      .side-menu a.active {
-        background: #ebf8ff;
-        color: #2b6cb0;
-        border-left: 3px solid #2b6cb0;
+      .nav-menu > li > a.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--nav-text);
+      }
+
+      /* Dropdown */
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--nav-bg);
+        min-width: 220px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: var(--transition);
+        padding: 0.5rem;
+        border-top: 2px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-menu > li:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .dropdown-menu a {
+        display: block;
+        padding: 0.8rem 1.2rem;
+        color: var(--nav-text);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: var(--transition);
+        white-space: nowrap;
+      }
+
+      .dropdown-menu a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        padding-left: 1.5rem;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: var(--transition);
+      }
+
+      .mobile-menu-btn:hover {
+        color: var(--accent);
+      }
+
+      @media (max-width: 768px) {
+        .header-main {
+          position: relative;
+        }
+
+        .logo-container {
+          padding: 0.8rem;
+        }
+
+        .logo img {
+          height: 60px;
+          width: 60px;
+        }
+
+        .logo-text h1 {
+          font-size: 1.2rem;
+        }
+
+        .logo-text p {
+          font-size: 0.8rem;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 100;
+        }
+
+        nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: var(--nav-bg);
+          padding: 0;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.active {
+          display: block;
+        }
+
+        .nav-menu {
+          flex-direction: column;
+          padding: 0.5rem 0;
+        }
+
+        .nav-menu > li {
+          width: 100%;
+        }
+
+        .nav-menu > li > a {
+          padding: 1rem 1.5rem;
+          justify-content: space-between;
+        }
+
+        .nav-menu > li > a::after {
+          content: '\f107';
+          font-family: 'Font Awesome 6 Free';
+          font-weight: 900;
+          transition: transform 0.3s ease;
+        }
+
+        .nav-menu > li.active > a::after {
+          transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+          position: static;
+          width: 100%;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          display: none;
+          padding: 0;
+          background: rgba(255, 255, 255, 0.05);
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+        }
+
+        .nav-menu > li.active .dropdown-menu {
+          display: block;
+          max-height: 500px;
+        }
+
+        .dropdown-menu a {
+          padding: 0.8rem 2rem;
+        }
+
+        /* Hero Section Mobile */
+        .hero {
+          margin-top: 80px;
+          height: 300px;
+        }
+
+        /* News Section Mobile */
+        .news-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .news-column {
+          padding: 1.2rem;
+        }
+
+        /* Features Section Mobile */
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        .quick-links-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .quick-link-card {
+          padding: 1.5rem;
+        }
+
+        /* Footer Mobile */
+        .footer {
+          padding: 3rem 0 1.5rem;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .footer-column {
+          text-align: center;
+        }
+
+        .footer-column h3::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .contact-list li {
+          justify-content: center;
+          text-align: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+
+        /* Modal Mobile */
+        .modal-content {
+          width: 95%;
+          padding: 1.5rem;
+          margin: 1rem;
+        }
+
+        .form-group input {
+          font-size: 16px; /* Prevents zoom on iOS */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo-text h1 {
+          font-size: 1rem;
+        }
+
+        .logo-text p {
+          font-size: 0.7rem;
+        }
+
+        .section-title h2 {
+          font-size: 1.8rem;
+        }
+
+        .news-item h4 {
+          font-size: 1rem;
+        }
+
+        .slider-nav button {
+          width: 35px;
+          height: 35px;
+          font-size: 0.9rem;
+        }
+
+        .slider-dots {
+          bottom: 0.5rem;
+        }
+
+        .dot {
+          width: 6px;
+          height: 6px;
+          margin: 0 4px;
+        }
+      }
+
+      /* Hero Section */
+      .hero {
+        margin-top: 135px;
+        height: calc(100vh - 135px);
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        background: var(--nav-bg);
+      }
+
+      .hero-content {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        line-height: 0;
+        font-size: 0;
+      }
+
+      .slider {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .slider-nav {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 2rem;
+        z-index: 10;
+      }
+
+      .slider-nav button {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        transition: var(--transition);
+        backdrop-filter: blur(5px);
+      }
+
+      .slider-nav button:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      .slider-dots {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 1rem;
+        z-index: 10;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .dot.active {
+        background: white;
+        transform: scale(1.2);
+      }
+
+      /* Features Section */
+      .features {
+        padding: 6rem 0;
+        background: white;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--text);
+        margin-bottom: 1rem;
+      }
+
+      .section-title p {
+        color: var(--text);
+        opacity: 0.7;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .feature-card {
+        background: var(--bg-light);
+        padding: 2rem;
+        border-radius: 20px;
+        transition: var(--transition);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+
+      .feature-card p {
+        color: var(--text);
+        opacity: 0.7;
+      }
+
+      @media (max-width: 1024px) {
+        .hero-text h1 {
+          font-size: 3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      /* News Section Styles */
+      .news-section {
+        padding: 6rem 0;
+        background: var(--bg-light);
+      }
+
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        margin-top: 2rem;
+      }
+
+      .news-column {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .column-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .news-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .news-item {
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .news-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .news-date {
+        font-size: 0.9rem;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
         font-weight: 500;
       }
 
-      .main-content {
-        flex: 1;
-        padding: 0;
+      .news-item h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        font-weight: 600;
       }
 
-      .page-title {
-        margin-bottom: 40px;
+      .news-item p {
+        font-size: 0.95rem;
+        color: var(--text);
+        opacity: 0.8;
+        margin-bottom: 0.8rem;
+        line-height: 1.5;
+      }
+
+      .read-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .read-more:hover {
+        gap: 0.8rem;
+        color: var(--accent);
+      }
+
+      @media (max-width: 768px) {
+        .news-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .news-column {
+          padding: 1.5rem;
+        }
+      }
+
+      /* Stats Section Styles */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: var(--transition);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .stat-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+      }
+
+      .stat-icon i {
+        font-size: 2rem;
+        color: white;
+      }
+
+      .stat-content h3 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .stat-content p {
+        color: var(--text);
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+
+      @media (max-width: 1024px) {
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 576px) {
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .quick-links-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .quick-link-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: var(--transition);
+        text-decoration: none;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .quick-link-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        background: var(--primary);
+      }
+
+      .quick-link-card:hover h3,
+      .quick-link-card:hover p {
+        color: white;
+      }
+
+      .quick-link-card:hover .quick-link-icon {
+        background: white;
+      }
+
+      .quick-link-card:hover .quick-link-icon i {
+        color: var(--primary);
+      }
+
+      .quick-link-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        transition: var(--transition);
+      }
+
+      .quick-link-icon i {
+        font-size: 1.8rem;
+        color: white;
+        transition: var(--transition);
+      }
+
+      .quick-link-card h3 {
+        font-size: 1.3rem;
+        color: var(--text);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .quick-link-card p {
+        color: var(--text);
+        font-size: 0.9rem;
+        opacity: 0.7;
+        transition: var(--transition);
+      }
+
+      @media (max-width: 1024px) {
+        .quick-links-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 576px) {
+        .quick-links-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Footer Styles */
+      .footer {
+        background: var(--primary);
+        color: white;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-column h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background: var(--accent);
+      }
+
+      .contact-list {
+        list-style: none;
+      }
+
+      .contact-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .contact-list i {
+        color: var(--accent);
+        font-size: 1.2rem;
+        margin-top: 0.3rem;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--accent);
+        padding-left: 0.5rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .social-link:hover {
+        background: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+      }
+
+      .footer-bottom p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 1024px) {
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 576px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Login Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        backdrop-filter: blur(5px);
+      }
+
+      .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 400px;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        transform: translateY(-20px);
+        animation: modalSlideIn 0.3s ease forwards;
+      }
+
+      @keyframes modalSlideIn {
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-header h3 {
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin: 0;
+      }
+
+      .close-modal {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text);
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: var(--transition);
+      }
+
+      .close-modal:hover {
+        color: var(--accent);
+        transform: scale(1.1);
+      }
+
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .form-group label {
+        font-size: 0.9rem;
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      .form-group input {
+        padding: 0.8rem 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.1);
+      }
+
+      .login-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 1rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .login-btn:hover {
+        background: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      .forgot-password {
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      .forgot-password a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .forgot-password a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 576px) {
+        .modal-content {
+          padding: 1.5rem;
+        }
+      }
+
+      .card-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
       }
 
       .page-title h1 {
@@ -93,192 +1095,121 @@
         font-size: 1.1rem;
       }
 
+      .side-menu {
+        width: 220px;
+        min-width: 220px;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #d32f2f; /* Kırmızı sol çizgi */
+      }
+
+      .side-menu h2 {
+        font-size: 1.2rem;
+        color: #d32f2f; /* Başlık rengi */
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      .side-menu h2::before {
+        content: '';
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background: #d32f2f;
+        border-radius: 50%;
+      }
+
+      .side-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .side-menu ul li {
+        margin-bottom: 10px;
+      }
+
+      .side-menu ul li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s ease;
+      }
+
+      .side-menu ul li a:hover {
+        color: #d32f2f; /* Hover rengi */
+      }
+
+      .side-menu ul li a::before {
+        content: '\f105'; /* Font Awesome ikonu */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        margin-right: 8px;
+        color: #d32f2f;
+        transition: transform 0.3s ease;
+      }
+
+      .side-menu ul li a:hover::before {
+        transform: translateX(5px);
+      }
+
+      .page-container {
+        display: flex;
+        margin-top: 100px;
+        background: #f5f7fa;
+        min-height: calc(100vh - 100px);
+        padding: 40px;
+        gap: 40px;
+      }
+
       .management-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
         gap: 30px;
         max-width: 1400px;
+        margin: 0 auto;
       }
 
       .management-card {
-        background: white;
+        background: #ffffff;
         border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-      }
-
-      .management-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .card-image {
-        width: 100%;
-        height: 320px;
-        overflow: hidden;
-        background: #f7fafc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        width: 300px; /* Kart genişliğini sabitler */
       }
 
       .card-image img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 15px;
       }
 
-      .card-content {
-        padding: 24px;
-      }
-
-      .card-content h3 {
-        color: #2d3748;
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 4px;
-      }
-
-      .card-content .title {
-        color: #718096;
-        font-size: 1rem;
-        margin-bottom: 20px;
-      }
-
-      .contact {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: #4a5568;
-        font-size: 0.95rem;
-      }
-
-      .contact-item i {
-        color: #2b6cb0;
-        font-size: 1.1rem;
-      }
-
-      .contact-item a {
-        color: #2b6cb0;
-        text-decoration: none;
-        transition: color 0.2s ease;
-      }
-
-      .contact-item a:hover {
-        color: #2c5282;
-      }
-
-      @media (max-width: 768px) {
-        .page-container {
-          flex-direction: column;
-          padding: 20px;
-          gap: 20px;
-        }
-
-        .side-menu {
-          width: 100%;
-          min-width: auto;
-        }
-
-        .main-content {
-          padding: 0;
-        }
-
-        .management-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .page-banner {
+      .hero-image {
+        background-image: url('universite-resmi.jpg'); /* Buraya resim dosyanızın yolunu ekleyin */
+        height: 50vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         position: relative;
-        height: 250px;
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.gantep.edu.tr/upload/photos/1920x1080/2023/12/1702897357_1.jpg') center/cover;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 0 40px 40px;
-        margin-top: 80px;
       }
 
-      .banner-title {
-        color: #fff;
-        font-size: 2.8rem;
-        font-weight: 600;
-        margin: 0 0 15px 0;
-        text-align: left;
-      }
-
-      .breadcrumb {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-      }
-
-      .breadcrumb a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 0.95rem;
-        opacity: 0.8;
-        transition: opacity 0.2s;
-      }
-
-      .breadcrumb a:hover {
-        opacity: 1;
-      }
-
-      .breadcrumb .separator {
-        color: #fff;
-        opacity: 0.5;
-        margin: 0 5px;
-      }
-
-      .breadcrumb .current {
-        color: #fff;
-        opacity: 0.9;
-        font-size: 0.95rem;
-      }
-
-      .page-container {
-        margin-top: 0;
-        background: #f5f7fa;
-        min-height: calc(100vh - 280px);
-        padding: 40px;
-        gap: 40px;
-        display: flex;
-      }
-
-      @media (max-width: 768px) {
-        .page-banner {
-          height: 200px;
-          padding: 0 20px 30px;
-        }
-
-        .banner-title {
-          font-size: 2.2rem;
-        }
-
-        .page-container {
-          flex-direction: column;
-          padding: 20px;
-          gap: 20px;
-        }
-
-        .side-menu {
-          width: 100%;
-          min-width: auto;
-        }
-
-        .main-content {
-          padding: 0;
-        }
-
-        .management-grid {
-          grid-template-columns: 1fr;
-        }
+      .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
       }
     </style>
   </head>
@@ -292,7 +1223,7 @@
               alt="GAÜN Logo"
             />
             <div class="logo-text">
-              <h1>NACİ TOPÇUOĞLU</h1>
+              <h1>NACİ TOPÇUĞLU</h1>
               <p>Meslek Yüksekokulu</p>
             </div>
           </a>
@@ -321,75 +1252,20 @@
                   </li>
                   <li><a href="#">TS EN ISO 9001:2015</a></li>
                   <li><a href="#">TS EN ISO/IEC 17025:2017</a></li>
-                  <li><a href="#">NACİ TOPÇUOĞLU KİMDİR? </a></li>
+                  <li><a href="#">NACİ TOPÇUĞLU KİMDİR? </a></li>
                 </ul>
               </li>
               <li>
                 <a href="#">BÖLÜMLER</a>
                 <ul class="dropdown-menu">
-                  <li>
-                    <a href="#">EL SANATLARI</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Halıcılık ve Kilimcilik</a></li>
-                      <li><a href="#">Mimari Dekoratif Sanatlar</a></li>
-                      <li><a href="#">Kuyumculuk ve Takı Tasarım</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">MAKİNA VE METAL TEKNOLOJİLERİ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Tekstil ve Halı makinaları</a></li>
-                      <li><a href="#">MAKİNE</a></li>
-                      <li><a href="#">İMALAT YÜRÜTME SİS. OPERATÖRLÜĞÜ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">GIDA İŞLEME BÖLÜMÜ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">UN VE UNLU MAMÜLLER TEKNOLOJİSİ</a></li>
-                      <li><a href="#">GIDA TEKNOLOJİSİ</a></li>
-                      <li><a href="#">GIDA KALİTE KONTRÖLÜ VE ANALİZİ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">TEKSTİL,GİYİM,AYAKKABI VE DERİ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">AYAKKABI TASARIMI VE ÜRETİM</a></li>
-                      <li><a href="#">GİYİM ÜRETİM TEKNOLOJİSİ</a></li>
-                      <li><a href="#">TEKSTİL TEKNOLOJİSİ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">KİMYA VE KİMYSAL İŞLETME BÖLÜMÜ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">KİMYA TEKNOLOJİSİ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">ELEKTRONİK VE OTOMASYON</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">KONTROL VE OTOMASYON</a></li>
-                      <li><a href="#">MEKATRONİK</a></li>
-                      <li><a href="#">RADYO VE TELEVİZYON TEKNOLOJİSİ</a></li>
-                      <li><a href="#">ELEKTRONİK HABERLEŞME</a></li>
-                      <li><a href="#">ELEKTRONİK TEKNOLOJİSİ</a></li>
-                      <li><a href="#">BİYOMEDİKAL CİHAZ TEKNOLOJİSİ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">ELEKTİRİK VE ENERJİ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">DOĞALGAZ VE TESİSAT TEKNOLOJİSİ</a></li>
-                      <li><a href="#">ELEKTRİK</a></li>
-                      <li><a href="#">İKLİMLENDİRME SOĞUTMA TEKNOLOJİSİ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">MOTORLU ARAÇLAR VE ULAŞTIRMA TEKNOLOJİSİ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">OTOMOTİV TEKNOLOJİSİ</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="#">EL SANATLARI</a></li>
+                  <li><a href="#">MAKİNA VE METAL TEKNOLOJİLERİ</a></li>
+                  <li><a href="#">GIDA İŞLEME BÖLÜMÜ</a></li>
+                  <li><a href="#">TEKSTİL,GİYİM,AYAKKABI VE DERİ</a></li>
+                  <li><a href="#">KİMYA VE KİMYSAL İŞLETME BÖLÜMÜ</a></li>
+                  <li><a href="#">ELEKTRONİK VE OTOMASYON</a></li>
+                  <li><a href="#">ELEKTİRİK VE ENERJİ</a></li>
+                  <li><a href="#">MOTORLU ARAÇLAR VE ULAŞTIRMA TEKNOLOJİSİ</a></li>
                 </ul>
               </li>
               <li>
@@ -472,31 +1348,30 @@
       </div>
     </header>
 
-    <div class="page-banner">
-      <h1 class="banner-title">YÖNETİM</h1>
-      <div class="breadcrumb">
-        <a href="index.html">Anasayfa</a>
-        <span class="separator">/</span>
-        <span class="current">Yönetim</span>
+    <div class="hero-image">
+      <div class="hero-text">
+        <h1>Üniversite Adı</h1>
+        <p>Üniversitenizin Sloganı veya Kısa Tanıtımı</p>
       </div>
     </div>
 
     <div class="page-container">
       <aside class="side-menu">
-        <h2>Hakkımızda</h2>
+        <h2>Okulumuz</h2>
         <ul>
-          <li><a href="yonetim.html" class="active">Yönetim Kadrosu</a></li>
+          <li><a href="#">Yönetim</a></li>
+          <li><a href="#">Akademik Personel</a></li>
           <li><a href="#">Genel Bilgiler</a></li>
           <li><a href="#">Faaliyet Raporları</a></li>
           <li><a href="#">Misyon</a></li>
           <li><a href="#">Vizyon</a></li>
           <li><a href="#">Kurallar</a></li>
-          <li><a href="#">Fiziki Alt Yapı</a></li>
+          <li><a href="#">Fiziki Altyapı</a></li>
           <li><a href="#">Organizasyon Şeması</a></li>
-          <li><a href="#">ARGE/Kalite/Agredidasyon</a></li>
+          <li><a href="#">Arge/Kalite/Akreditasyon(İlgili Form, Rapor ve Dökümanlar)</a></li>
           <li><a href="#">TS EN ISO 9001:2015</a></li>
           <li><a href="#">TS EN ISO/IEC 17025:2017</a></li>
-          <li><a href="#">Naci Topçuoğlu Kimdir?</a></li>
+          <li><a href="#">Naci TOPÇUĞLU Kimdir?</a></li>
         </ul>
       </aside>
 
@@ -510,63 +1385,46 @@
           <!-- Müdür -->
           <div class="management-card">
             <div class="card-image">
-              <img src="path/to/mudur-photo.jpg" alt="Müdür">
+              <img src="images/hbozkurt1.png" alt="Müdür">
             </div>
             <div class="card-content">
-              <h3>Prof. Dr. Ad Soyad</h3>
-              <div class="title">Müdür</div>
-              <div class="contact">
-                <div class="contact-item">
-                  <i class="fas fa-envelope"></i>
-                  <a href="mailto:mudur@gantep.edu.tr">mudur@gantep.edu.tr</a>
-                </div>
-                <div class="contact-item">
-                  <i class="fas fa-phone"></i>
-                  <a href="tel:+903423601200">+90 342 360 1200</a>
-                </div>
-              </div>
+              <h3>Prof. Dr. Hüseyin BOZKURT</h3>
+              <div class="title">Yüksekokul Müdürü</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="management-grid">
+          <!-- Müdür Yardımcısı -->
+          <div class="management-card">
+            <div class="card-image">
+              <img src="images/sonulkesen.jpg" alt="Müdür Yardımcısı">
+            </div>
+            <div class="card-content">
+              <h3>Doç. Dr. Songül KESEN</h3>
+              <div class="title">Müdür Yardımcısı</div>
             </div>
           </div>
 
           <!-- Müdür Yardımcısı -->
           <div class="management-card">
             <div class="card-image">
-              <img src="path/to/mudur-yrd-photo.jpg" alt="Müdür Yardımcısı">
+              <img src="images/abilici.jpg" alt="Müdür Yardımcısı">
             </div>
             <div class="card-content">
-              <h3>Doç. Dr. Ad Soyad</h3>
+              <h3>Öğr. Gör. Aykut BİLİCİ</h3>
               <div class="title">Müdür Yardımcısı</div>
-              <div class="contact">
-                <div class="contact-item">
-                  <i class="fas fa-envelope"></i>
-                  <a href="mailto:muduryrd@gantep.edu.tr">muduryrd@gantep.edu.tr</a>
-                </div>
-                <div class="contact-item">
-                  <i class="fas fa-phone"></i>
-                  <a href="tel:+903423601201">+90 342 360 1201</a>
-                </div>
-              </div>
             </div>
           </div>
 
           <!-- Yüksekokul Sekreteri -->
           <div class="management-card">
             <div class="card-image">
-              <img src="path/to/sekreter-photo.jpg" alt="Yüksekokul Sekreteri">
+              <img src="images/Ekran görüntüsü 2025-03-12 001657.png" alt="Yüksekokul Sekreteri">
             </div>
             <div class="card-content">
-              <h3>Ad Soyad</h3>
+              <h3>Mücahit DOĞAN</h3>
               <div class="title">Yüksekokul Sekreteri</div>
-              <div class="contact">
-                <div class="contact-item">
-                  <i class="fas fa-envelope"></i>
-                  <a href="mailto:sekreter@gantep.edu.tr">sekreter@gantep.edu.tr</a>
-                </div>
-                <div class="contact-item">
-                  <i class="fas fa-phone"></i>
-                  <a href="tel:+903423601202">+90 342 360 1202</a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
