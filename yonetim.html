@@ -195,7 +195,8 @@
     .page-banner {
       position: relative;
       height: 250px;
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.gantep.edu.tr/upload/photos/1920x1080/2023/12/1702897357_1.jpg') center/cover;
+      background: url('images/abilici.jpg') no-repeat center center fixed;
+      background-size: cover;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -203,12 +204,16 @@
       margin-top: 80px;
     }
 
+    .page-banner img {
+      display: none;
+    }
+
     .banner-title {
       color: #fff;
       font-size: 2.8rem;
       font-weight: 600;
       margin: 0 0 15px 0;
-      text-align: left;
+      text-align: left; 
     }
 
     .breadcrumb {
@@ -247,12 +252,13 @@
       min-height: calc(100vh - 280px);
       padding: 40px;
       gap: 40px;
-      display: flex;
+      display: flex;  
     }
 
     @media (max-width: 768px) {
       .page-banner {
         height: 200px;
+        
         padding: 0 20px 30px;
       }
 
@@ -282,6 +288,7 @@
   </style>
 </head>
 <body>
+ 
   <header>
     <div class="header-main">
       <div class="container">
@@ -472,6 +479,7 @@
   </header>
 
   <div class="page-banner">
+    <img src="images/abilici.jpg" alt="">
     <h1 class="banner-title">YÖNETİM</h1>
     <div class="breadcrumb">
       <a href="index.html">Anasayfa</a>
