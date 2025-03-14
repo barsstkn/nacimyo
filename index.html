@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="tr">
   <head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a365d",
+              secondary: "#2d3748",
+              accent: "#3182ce",
+              text: "#1f2937",
+              "bg-light": "#f8fafc",
+              "nav-bg": "#1a365d",
+              "nav-text": "#ffffff",
+            },
+          },
+        },
+      };
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Naci Topçuoğlu MYO - Gaziantep Üniversitesi</title>
@@ -12,192 +30,526 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
-    <header>
-      <div class="header-main">
-        <div class="container">
-          <a href="#" class="logo">
-            <img
-              src="https://pbs.twimg.com/profile_images/1023869108474064896/GehvVKTY_400x400.jpg"
-              alt="GAÜN Logo"
-            />
-            <div class="logo-text">
-              <h1>NACİ TOPÇUOĞLU</h1>
-              <p>Meslek Yüksekokulu</p>
-            </div>
-          </a>
-          <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-          </button>
-          <nav>
-            <ul class="nav-menu">
-              <li><a href="index.html" class="active">ANASAYFA</a></li>
-              <li>
-                <a href="#">HAKKIMIZDA</a>
-                <ul class="dropdown-menu">
-                  <li><a href="yonetim.html">YÖNETİM KADROSU</a></li>
-                  <li><a href="genelbilgiler.html">GENEL BİLGİLER</a></li>
-                  <li><a href="faaliyetraporları.html">FAALİYET RAPORLARI</a></li>
-                  <li><a href="misyon.html">MİSYON</a></li>
-                  <li><a href="vizyon.html">VİZYON</a></li>
-                  <li><a href="kurullar.html">KURULLAR</a></li>
-                  <li><a href="fizikialtyapı.html">FİZİKİ ALT YAPI</a></li>
-                  <li><a href="organizasyonseması.html">ORGANİZASYON ŞEMASI</a></li>
+  <body class="font-['Poppins'] leading-relaxed text-text bg-bg-light">
+    <header class="fixed w-full top-0 left-0 z-[1000] bg-nav-bg">
+      <div class="header-main p-0 h-auto bg-nav-bg">
+        <div class="max-w-[1400px] mx-auto px-5">
+          <div class="flex items-center justify-between py-6 px-8 bg-nav-bg mt-0">
+            <a href="#" class="flex items-center gap-6 no-underline">
+              <img
+                src="https://pbs.twimg.com/profile_images/1023869108474064896/GehvVKTY_400x400.jpg"
+                class="h-[90px] w-[90px] transition-all duration-300 rounded-full shadow-md bg-white p-[3px]"
+                alt="GAÜN Logo"
+              />
+              <div class="border-l-[3px] border-white/30 pl-6">
+                <h1
+                  class="text-2xl font-bold text-white leading-tight uppercase mb-1"
+                >
+                  NACİ TOPÇUOĞLU
+                </h1>
+                <p
+                  class="text-lg text-white/90 font-medium uppercase tracking-wider"
+                >
+                  Meslek Yüksekokulu
+                </p>
+              </div>
+            </a>
+            <button
+              id="menuBtn"
+              class="lg:hidden bg-transparent border-none text-2xl text-white cursor-pointer p-2 transition-all hover:text-accent"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+
+          <nav id="mobileNav" class="bg-nav-bg w-full border-t border-white/10 border-b-0 m-0 p-0 lg:block hidden">
+            <ul class="flex justify-center list-none m-0 p-0">
+              <li class="relative group">
+                <a
+                  href="index.html"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >ANASAYFA</a
+                >
+              </li>
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >HAKKIMIZDA</a
+                >
+                <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
                   <li>
-                    <a href="argekalite.html"
+                    <a
+                      href="yonetim.html"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >YÖNETİM KADROSU</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="genelbilgiler.html"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >GENEL BİLGİLER</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="faaliyetraporları.html"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >FAALİYET RAPORLARI</a
+                    >
+                  </li>
+                  <li>
+                    <a href="misyon.html" class="block px-6 py-3 hover:bg-white/10"
+                      >MİSYON</a
+                    >
+                  </li>
+                  <li>
+                    <a href="vizyon.html" class="block px-6 py-3 hover:bg-white/10"
+                      >VİZYON</a
+                    >
+                  </li>
+                  <li>
+                    <a href="kurullar.html" class="block px-6 py-3 hover:bg-white/10"
+                      >KURULLAR</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="fizikialtyapı.html"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >FİZİKİ ALT YAPI</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="organizasyonseması.html"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >ORGANİZASYON ŞEMASI</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="argekalite.html"
+                      class="block px-6 py-3 hover:bg-white/10"
                       >ARGE/KALİTE/AGREDİTASYON(İLGİLİ FORM, RAPOR ve
                       DÖKÜMANLAR)</a
                     >
                   </li>
-                  <li><a href="ts2015.html">TS EN ISO 9001:2015</a></li>
-                  <li><a href="ts2017.html">TS EN ISO/IEC 17025:2017</a></li>
-                  <li><a href="nacitopcuoglukimdir.html">NACİ TOPÇUOĞLU KİMDİR? </a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">BÖLÜMLER</a>
-                <ul class="dropdown-menu">
                   <li>
-                    <a href="#">EL SANATLARI</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="halıcılıkvekilimcilik.html">Halıcılık ve Kilimcilik</a></li>
-                      <li><a href="mimaridekoratifsanatları.html">Mimari Dekoratif Sanatlar</a></li>
-                      <li><a href="kuyumculukvetakıtasarım.html">Kuyumculuk ve Takı Tasarım</a></li>
-                    </ul>
+                    <a href="ts2015.html" class="block px-6 py-3 hover:bg-white/10"
+                      >TS EN ISO 9001:2015</a
+                    >
                   </li>
                   <li>
-                    <a href="#">MAKİNA VE METAL TEKNOLOJİLERİ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="tekstilvehalımakinaları.html">Tekstil ve Halı makinaları</a></li>
-                      <li><a href="#">MAKİNE</a></li>
-                      <li><a href="#">İMALAT YÜRÜTME SİS. OPERATÖRLÜĞÜ</a></li>
-                    </ul>
+                    <a href="ts2017.html" class="block px-6 py-3 hover:bg-white/10"
+                      >TS EN ISO/IEC 17025:2017</a
+                    >
                   </li>
                   <li>
-                    <a href="#">GIDA İŞLEME BÖLÜMÜ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">UN VE UNLU MAMÜLLER TEKNOLOJİSİ</a></li>
-                      <li><a href="#">GIDA TEKNOLOJİSİ</a></li>
-                      <li><a href="#">GIDA KALİTE KONTRÖLÜ VE ANALİZİ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">TEKSTİL,GİYİM,AYAKKABI VE DERİ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">AYAKKABI TASARIMI VE ÜRETİM</a></li>
-                      <li><a href="#">GİYİM ÜRETİM TEKNOLOJİSİ</a></li>
-                      <li><a href="#">TEKSTİL TEKNOLOJİSİ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">KİMYA VE KİMYSAL İŞLETME BÖLÜMÜ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">KİMYA TEKNOLOJİSİ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">ELEKTRONİK VE OTOMASYON</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">KONTROL VE OTOMASYON</a></li>
-                      <li><a href="#">MEKATRONİK</a></li>
-                      <li><a href="#">RADYO VE TELEVİZYON TEKNOLOJİSİ</a></li>
-                      <li><a href="#">ELEKTRONİK HABERLEŞME</a></li>
-                      <li><a href="#">ELEKTRONİK TEKNOLOJİSİ</a></li>
-                      <li><a href="#">BİYOMEDİKAL CİHAZ TEKNOLOJİSİ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">ELEKTİRİK VE ENERJİ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">DOĞALGAZ VE TESİSAT TEKNOLOJİSİ</a></li>
-                      <li><a href="#">ELEKTRİK</a></li>
-                      <li><a href="#">İKLİMLENDİRME SOĞUTMA TEKNOLOJİSİ</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">MOTORLU ARAÇLAR VE ULAŞTIRMA TEKNOLOJİSİ</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">OTOMOTİV TEKNOLOJİSİ</a></li>
-                    </ul>
+                    <a
+                      href="nacitopcuoglukimdir.html"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >NACİ TOPÇUOĞLU KİMDİR? </a
+                    >
                   </li>
                 </ul>
               </li>
-              <li>
-                <a href="#">PERSONEL</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">AKADEMİK PERSONEL</a></li>
-                  <li><a href="#">İDARİ PERSONEL</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#" id="studentLoginBtn">ÖĞRENCİ</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">MEVZUAT</a></li>
-                  <li><a href="#">YÖNETMELİK</a></li>
-                  <li><a href="#">DERS İÇERİKLERİ</a></li>
-                  <li><a href="#">FORMLAR</a></li>
-                  <li><a href="#">AKADEMİK TAKVİM</a></li>
-                  <li><a href="#">TRİMESTER VE İŞYERİ EĞİTİMİ</a></li>
-                  <li>
-                    <a href="#">ÇİF ANADAL VE YAN ANADAL KATALOĞU(2025)</a>
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >BÖLÜMLER</a
+                >
+                <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text left-0 min-w-[200px] z-50">
+                  <li class="relative group/submenu">
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10 whitespace-nowrap">EL SANATLARI</a>
+                    <ul class="dropdown-menu absolute hidden group-hover/submenu:block bg-nav-bg text-nav-text left-full top-0 min-w-[200px]">
+                      <li>
+                        <a href="halıcılıkvekilimcilik.html" class="block px-6 py-3 hover:bg-white/10 whitespace-nowrap">Halıcılık ve Kilimcilik</a>
+                      </li>
+                      <li>
+                        <a
+                          href="mimaridekoratifsanatları.html"
+                          class="block px-6 py-3 hover:bg-white/10"
+                          >Mimari Dekoratif Sanatlar</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="kuyumculukvetakıtasarım.html"
+                          class="block px-6 py-3 hover:bg-white/10"
+                          >Kuyumculuk ve Takı Tasarım</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="relative group">
+                    <a
+                      href="#"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >MAKİNA VE METAL TEKNOLOJİLERİ</a
+                    >
+                    <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text left-full top-0 min-w-[200px] opacity-0 invisible transition-all duration-200 group-hover:opacity-100 group-hover:visible">
+                      <li>
+                        <a href="tekstilvehalımakinaları.html" class="block px-6 py-3 hover:bg-white/10">Tekstil ve Halı makinaları</a>
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >MAKİNE</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >İMALAT YÜRÜTME SİS. OPERATÖRLÜĞÜ</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="relative group">
+                    <a
+                      href="#"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >GIDA İŞLEME BÖLÜMÜ</a
+                    >
+                    <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >UN VE UNLU MAMÜLLER TEKNOLOJİSİ</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >GIDA TEKNOLOJİSİ</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >GIDA KALİTE KONTRÖLÜ VE ANALİZİ</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="relative group">
+                    <a
+                      href="#"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >TEKSTİL,GİYİM,AYAKKABI VE DERİ</a
+                    >
+                    <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >AYAKKABI TASARIMI VE ÜRETİM</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >GİYİM ÜRETİM TEKNOLOJİSİ</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >TEKSTİL TEKNOLOJİSİ</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="relative group">
+                    <a
+                      href="#"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >KİMYA VE KİMYSAL İŞLETME BÖLÜMÜ</a
+                    >
+                    <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >KİMYA TEKNOLOJİSİ</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="relative group">
+                    <a
+                      href="#"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >ELEKTRONİK VE OTOMASYON</a
+                    >
+                    <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >KONTROL VE OTOMASYON</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >MEKATRONİK</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >RADYO VE TELEVİZYON TEKNOLOJİSİ</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >ELEKTRONİK HABERLEŞME</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >ELEKTRONİK TEKNOLOJİSİ</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >BİYOMEDİKAL CİHAZ TEKNOLOJİSİ</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="relative group">
+                    <a
+                      href="#"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >ELEKTİRİK VE ENERJİ</a
+                    >
+                    <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >DOĞALGAZ VE TESİSAT TEKNOLOJİSİ</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >ELEKTRİK</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >İKLİMLENDİRME SOĞUTMA TEKNOLOJİSİ</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="relative group">
+                    <a
+                      href="#"
+                      class="block px-6 py-3 hover:bg-white/10"
+                      >MOTORLU ARAÇLAR VE ULAŞTIRMA TEKNOLOJİSİ</a
+                    >
+                    <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                      <li>
+                        <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                          >OTOMOTİV TEKNOLOJİSİ</a
+                        >
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </li>
-              <li>
-                <a href="#" id="academicLoginBtn">KURULLAR</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">YÖNETİM</a></li>
-                  <li><a href="#">YÖNETİM KURULU</a></li>
-                  <li><a href="#">YÜKSEKOKUL KURULU</a></li>
-                  <li><a href="#">DANIŞMA KURULLARI</a></li>
-                  <li><a href="#">PROJE KURULU</a></li>
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >PERSONEL</a
+                >
+                <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >AKADEMİK PERSONEL</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >İDARİ PERSONEL</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="relative group">
+                <a
+                  href="#"
+                  id="studentLoginBtn"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >ÖĞRENCİ</a
+                >
+                <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >MEVZUAT</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >YÖNETMELİK</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >DERS İÇERİKLERİ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >FORMLAR</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >AKADEMİK TAKVİM</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >TRİMESTER VE İŞYERİ EĞİTİMİ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >ÇİF ANADAL VE YAN ANADAL KATALOĞU(2025)</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="relative group">
+                <a
+                  href="#"
+                  id="academicLoginBtn"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >KURULLAR</a
+                >
+                <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >YÖNETİM</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >YÖNETİM KURULU</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >YÜKSEKOKUL KURULU</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >DANIŞMA KURULLARI</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >PROJE KURULU</a
+                    >
+                  </li>
                 </ul>
               </li>
 
-              <li>
-                <a href="#">ATÖLYELER</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">MAKİNA HALISI DOKUMA ATÖLYESİ</a></li>
-                  <li><a href="#">CAM VE SERAMİK İŞLEME ATÖLYESİ</a></li>
-                  <li><a href="#">KUTNU VE KİLİM DOKUMA ATÖLYESİ</a></li>
-                  <li><a href="#">AYAKKABI TASARIMI VE İMALAT ATÖLYESİ</a></li>
-                </ul>
-              </li>
-
-              <li>
-                <a href="#">TEST LAB.</a>
-                <ul class="dropdown-menu"></ul>
-              </li>
-
-              <li>
-                <a href="#">ÜRÜNLER</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">HALI VE KİLİM DOKUMA ÜRÜNLERİ</a></li>
-                  <li><a href="#">CAM İŞLEME ATÖLYESİ ÜRÜNLERİ</a></li>
-                  <li><a href="#">KUTNU DOKUMA ATÖLYESİ ÜRÜNLERİ</a></li>
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >ATÖLYELER</a
+                >
+                <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
                   <li>
-                    <a href="#"
-                      >AYAKKABI TASARIMI VE İMALAT ATÖLYESİ ÜRÜNLERİ
-                    </a>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >MAKİNA HALISI DOKUMA ATÖLYESİ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >CAM VE SERAMİK İŞLEME ATÖLYESİ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >KUTNU VE KİLİM DOKUMA ATÖLYESİ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >AYAKKABI TASARIMI VE İMALAT ATÖLYESİ</a
+                    >
                   </li>
                 </ul>
               </li>
 
-              <li>
-                <a href="#">ANKETLER</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">ÖĞRENCİ MEMNUNİYETİ ANKETLERİ</a></li>
-                  <li><a href="#">İŞYERİ MEMNUNİYET ANKETİ</a></li>
-                  <li><a href="#">PERSONEL MEMNUNİYET ANKETİ</a></li>
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >TEST LAB.</a
+                >
+                <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text"></ul>
+              </li>
+
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >ÜRÜNLER</a
+                >
+                <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >HALI VE KİLİM DOKUMA ÜRÜNLERİ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >CAM İŞLEME ATÖLYESİ ÜRÜNLERİ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >KUTNU DOKUMA ATÖLYESİ ÜRÜNLERİ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >AYAKKABI TASARIMI VE İMALAT ATÖLYESİ ÜRÜNLERİ</a
+                    >
+                  </li>
                 </ul>
               </li>
 
-              <li>
-                <a href="#">İLETİŞİM</a>
-                <ul class="dropdown-menu"></ul>
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >ANKETLER</a
+                >
+                <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text">
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >ÖĞRENCİ MEMNUNİYETİ ANKETLERİ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >İŞYERİ MEMNUNİYET ANKETİ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="block px-6 py-3 hover:bg-white/10"
+                      >PERSONEL MEMNUNİYET ANKETİ</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20"
+                  >İLETİŞİM</a
+                >
+                <ul class="dropdown-menu absolute hidden group-hover:block bg-nav-bg text-nav-text"></ul>
               </li>
             </ul>
           </nav>
@@ -205,155 +557,161 @@
       </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-content">
-        <div class="slider">
-          <div class="slide active">
+    <!-- Hero Section -->
+    <section class="mt-[135px] h-[calc(100vh-135px)] w-full relative overflow-hidden bg-nav-bg">
+      <div class="relative w-full h-full leading-none text-[0]">
+        <div class="relative w-full h-full overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-full opacity-0 transition-opacity duration-800 ease-in-out active:opacity-100">
             <img
               src="https://ntmyo.gantep.edu.tr/files/slider/teknofest2025.png"
               alt="NTMYO Teknofest"
+              class="w-full h-full object-contain object-center"
             />
           </div>
-          <div class="slide">
+          <div class="absolute top-0 left-0 w-full h-full opacity-0 transition-opacity duration-800 ease-in-out">
             <img
               src="https://ntmyo.gantep.edu.tr/files/slider/sosyalmedya_ins.png"
               alt="NTMYO Sosyal Medya"
+              class="w-full h-full object-contain object-center"
             />
           </div>
         </div>
-        <div class="slider-nav">
-          <button class="prev-btn">
+        <div class="absolute top-1/2 left-0 right-0 -translate-y-1/2 flex justify-between px-8 z-10">
+          <button class="bg-white/20 border-none w-[50px] h-[50px] rounded-full cursor-pointer flex items-center justify-center text-white text-2xl transition-all duration-300 hover:bg-white/30 hover:scale-110 backdrop-blur-sm">
             <i class="fas fa-chevron-left"></i>
           </button>
-          <button class="next-btn">
+          <button class="bg-white/20 border-none w-[50px] h-[50px] rounded-full cursor-pointer flex items-center justify-center text-white text-2xl transition-all duration-300 hover:bg-white/30 hover:scale-110 backdrop-blur-sm">
             <i class="fas fa-chevron-right"></i>
           </button>
         </div>
-        <div class="slider-dots"></div>
-      </div>
-    </section>
-
-    <section class="features">
-      <div class="container">
-        <div class="section-title">
-          <h2>Hızlı Erişim</h2>
-          <p>Sık Kullanılan Bağlantılar</p>
-        </div>
-        <div class="quick-links-grid">
-          <a href="#" class="quick-link-card">
-            <div class="quick-link-icon">
-              <i class="fas fa-bullhorn"></i>
-            </div>
-            <h3>Duyurular</h3>
-            <p>Güncel Duyuru ve İlanlar</p>
-          </a>
-          <a href="#" class="quick-link-card">
-            <div class="quick-link-icon">
-              <i class="fas fa-user-tie"></i>
-            </div>
-            <h3>Akademik Personel</h3>
-            <p>Akademik Kadromuz</p>
-          </a>
-          <a href="#" class="quick-link-card">
-            <div class="quick-link-icon">
-              <i class="fas fa-building"></i>
-            </div>
-            <h3>İşyeri Eğitim Portalı</h3>
-            <p>Staj ve İşyeri Eğitimi</p>
-          </a>
-          <a href="#" class="quick-link-card">
-            <div class="quick-link-icon">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <h3>Mezun Portalı</h3>
-            <p>Mezunlarımız İçin</p>
-          </a>
-          <a href="#" class="quick-link-card">
-            <div class="quick-link-icon">
-              <i class="fas fa-user-plus"></i>
-            </div>
-            <h3>Aday Öğrenci</h3>
-            <p>E-Kayıt İşlemleri</p>
-          </a>
-          <a href="#" class="quick-link-card">
-            <div class="quick-link-icon">
-              <i class="fas fa-globe"></i>
-            </div>
-            <h3>GİMER</h3>
-            <p>Gaziantep Üniversitesi GİMER</p>
-          </a>
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4 z-10">
+          <div class="w-3 h-3 rounded-full bg-white/50 cursor-pointer transition-all duration-300 hover:bg-white hover:scale-110"></div>
+          <div class="w-3 h-3 rounded-full bg-white/50 cursor-pointer transition-all duration-300 hover:bg-white hover:scale-110"></div>
         </div>
       </div>
     </section>
 
-    <section class="news-section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Duyuru ve Haberler</h2>
-          <p>Son Gelişmeler ve Önemli Bilgilendirmeler</p>
+    <!-- Features Section -->
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-text mb-4">Hızlı Erişim</h2>
+          <p class="text-text/70 max-w-2xl mx-auto">Sık Kullanılan Bağlantılar</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <a href="#" class="block p-8 bg-bg-light rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group">
+            <div class="w-[70px] h-[70px] bg-primary rounded-full flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-white">
+              <i class="fas fa-bullhorn text-2xl text-white transition-all duration-300 group-hover:text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-text transition-all duration-300 group-hover:text-white">Duyurular</h3>
+            <p class="text-text/70 transition-all duration-300 group-hover:text-white/90">Güncel Duyuru ve İlanlar</p>
+          </a>
+
+          <a href="#" class="block p-8 bg-bg-light rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group">
+            <div class="w-[70px] h-[70px] bg-primary rounded-full flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-white">
+              <i class="fas fa-user-tie text-2xl text-white transition-all duration-300 group-hover:text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-text transition-all duration-300 group-hover:text-white">Akademik Personel</h3>
+            <p class="text-text/70 transition-all duration-300 group-hover:text-white/90">Akademik Kadromuz</p>
+          </a>
+
+          <a href="#" class="block p-8 bg-bg-light rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group">
+            <div class="w-[70px] h-[70px] bg-primary rounded-full flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-white">
+              <i class="fas fa-building text-2xl text-white transition-all duration-300 group-hover:text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-text transition-all duration-300 group-hover:text-white">İşyeri Eğitim Portalı</h3>
+            <p class="text-text/70 transition-all duration-300 group-hover:text-white/90">Staj ve İşyeri Eğitimi</p>
+          </a>
+
+          <a href="#" class="block p-8 bg-bg-light rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group">
+            <div class="w-[70px] h-[70px] bg-primary rounded-full flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-white">
+              <i class="fas fa-graduation-cap text-2xl text-white transition-all duration-300 group-hover:text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-text transition-all duration-300 group-hover:text-white">Mezun Portalı</h3>
+            <p class="text-text/70 transition-all duration-300 group-hover:text-white/90">Mezunlarımız İçin</p>
+          </a>
+
+          <a href="#" class="block p-8 bg-bg-light rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group">
+            <div class="w-[70px] h-[70px] bg-primary rounded-full flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-white">
+              <i class="fas fa-user-plus text-2xl text-white transition-all duration-300 group-hover:text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-text transition-all duration-300 group-hover:text-white">Aday Öğrenci</h3>
+            <p class="text-text/70 transition-all duration-300 group-hover:text-white/90">E-Kayıt İşlemleri</p>
+          </a>
+
+          <a href="#" class="block p-8 bg-bg-light rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group">
+            <div class="w-[70px] h-[70px] bg-primary rounded-full flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-white">
+              <i class="fas fa-globe text-2xl text-white transition-all duration-300 group-hover:text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-text transition-all duration-300 group-hover:text-white">GİMER</h3>
+            <p class="text-text/70 transition-all duration-300 group-hover:text-white/90">Gaziantep Üniversitesi GİMER</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-24 bg-bg-light">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-text mb-4">Duyuru ve Haberler</h2>
+          <p class="text-text/70">Son Gelişmeler ve Önemli Bilgilendirmeler</p>
         </div>
 
-        <div class="news-grid">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <!-- Duyurular -->
-          <div class="news-column">
-            <h3 class="column-title">
-              <i class="fas fa-bullhorn"></i>
+          <div class="bg-white rounded-xl p-8 shadow-sm">
+            <h3 class="flex items-center text-xl font-semibold mb-6">
+              <i class="fas fa-bullhorn mr-3 text-primary"></i>
               Duyurular
             </h3>
-            <div class="news-list">
-              <div class="news-item">
-                <div class="news-date">15 Mart 2024</div>
-                <h4>2024 Bahar Dönemi Vize Sınav Programı</h4>
-                <p>
-                  2023-2024 Eğitim Öğretim Yılı Bahar Dönemi Vize Sınavları 1-12
-                  Nisan tarihleri arasında yapılacaktır.
-                </p>
-                <a href="#" class="read-more"
-                  >Detaylı Bilgi <i class="fas fa-arrow-right"></i
-                ></a>
+            <div class="space-y-6">
+              <div class="border-b border-gray-100 pb-6 last:border-0">
+                <div class="text-sm text-primary/80 mb-2">15 Mart 2024</div>
+                <h4 class="text-lg font-semibold mb-2">2024 Bahar Dönemi Vize Sınav Programı</h4>
+                <p class="text-text/70 mb-4">2023-2024 Eğitim Öğretim Yılı Bahar Dönemi Vize Sınavları 1-12 Nisan tarihleri arasında yapılacaktır.</p>
+                <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                  Detaylı Bilgi 
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
-              <div class="news-item">
-                <div class="news-date">10 Mart 2024</div>
-                <h4>Staj Başvuruları Başladı</h4>
-                <p>
-                  2024 Yaz dönemi staj başvuruları başlamıştır. Son başvuru
-                  tarihi 30 Nisan 2024'tür.
-                </p>
-                <a href="#" class="read-more"
-                  >Detaylı Bilgi <i class="fas fa-arrow-right"></i
-                ></a>
+              <div class="border-b border-gray-100 pb-6 last:border-0">
+                <div class="text-sm text-primary/80 mb-2">10 Mart 2024</div>
+                <h4 class="text-lg font-semibold mb-2">Staj Başvuruları Başladı</h4>
+                <p class="text-text/70 mb-4">2024 Yaz dönemi staj başvuruları başlamıştır. Son başvuru tarihi 30 Nisan 2024'tür.</p>
+                <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                  Detaylı Bilgi 
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
             </div>
           </div>
 
           <!-- Haberler -->
-          <div class="news-column">
-            <h3 class="column-title">
-              <i class="fas fa-newspaper"></i>
+          <div class="bg-white rounded-xl p-8 shadow-sm">
+            <h3 class="flex items-center text-xl font-semibold mb-6">
+              <i class="fas fa-newspaper mr-3 text-primary"></i>
               Etkinlikler
             </h3>
-            <div class="news-list">
-              <div class="news-item">
-                <div class="news-date">12 Mart 2024</div>
-                <h4>TEKNOFEST 2024 Başarımız</h4>
-                <p>
-                  Öğrencilerimiz TEKNOFEST 2024'te Tekstil Teknolojileri
-                  kategorisinde birincilik ödülü kazandı.
-                </p>
-                <a href="#" class="read-more"
-                  >Detaylı Bilgi <i class="fas fa-arrow-right"></i
-                ></a>
+            <div class="space-y-6">
+              <div class="border-b border-gray-100 pb-6 last:border-0">
+                <div class="text-sm text-primary/80 mb-2">12 Mart 2024</div>
+                <h4 class="text-lg font-semibold mb-2">TEKNOFEST 2024 Başarımız</h4>
+                <p class="text-text/70 mb-4">Öğrencilerimiz TEKNOFEST 2024'te Tekstil Teknolojileri kategorisinde birincilik ödülü kazandı.</p>
+                <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                  Detaylı Bilgi 
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
-              <div class="news-item">
-                <div class="news-date">5 Mart 2024</div>
-                <h4>Sektör Buluşması Etkinliği</h4>
-                <p>
-                  Tekstil sektörünün önde gelen firmaları ile öğrencilerimiz
-                  kampüsümüzde buluştu.
-                </p>
-                <a href="#" class="read-more"
-                  >Detaylı Bilgi <i class="fas fa-arrow-right"></i
-                ></a>
+              <div class="border-b border-gray-100 pb-6 last:border-0">
+                <div class="text-sm text-primary/80 mb-2">5 Mart 2024</div>
+                <h4 class="text-lg font-semibold mb-2">Sektör Buluşması Etkinliği</h4>
+                <p class="text-text/70 mb-4">Tekstil sektörünün önde gelen firmaları ile öğrencilerimiz kampüsümüzde buluştu.</p>
+                <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                  Detaylı Bilgi 
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -361,141 +719,310 @@
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-column">
-            <h3>İletişim Bilgileri</h3>
-            <ul class="contact-list">
-              <li>
-                <i class="fas fa-map-marker-alt"></i>
-                <span
-                  >Naci Topçuoğlu Meslek Yüksekokulu, Gaziantep Üniversitesi,
-                  Şehitkamil/Gaziantep</span
-                >
+    <footer class="bg-nav-bg text-white py-16">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Grid Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <!-- İletişim Bilgileri -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6 relative after:content-[''] after:absolute after:bottom-[-10px] after:left-0 after:w-16 after:h-[2px] after:bg-accent">
+              İletişim Bilgileri
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-map-marker-alt mt-1.5"></i>
+                <span>Naci Topçuoğlu Meslek Yüksekokulu, Gaziantep Üniversitesi, Şehitkamil/Gaziantep</span>
               </li>
-              <li>
+              <li class="flex items-center gap-3">
                 <i class="fas fa-phone"></i>
                 <span>+90 342 360 1200</span>
               </li>
-              <li>
+              <li class="flex items-center gap-3">
                 <i class="fas fa-envelope"></i>
                 <span>ntmyo@gantep.edu.tr</span>
               </li>
             </ul>
           </div>
-          <div class="footer-column">
-            <h3>Hızlı Erişim</h3>
-            <ul class="footer-links">
-              <li><a href="#">Akademik Takvim</a></li>
-              <li><a href="#">Ders Programı</a></li>
-              <li><a href="#">Sınav Programı</a></li>
-              <li><a href="#">Formlar ve Belgeler</a></li>
-              <li><a href="#">Yönetmelikler</a></li>
+
+          <!-- Hızlı Erişim -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6 relative after:content-[''] after:absolute after:bottom-[-10px] after:left-0 after:w-16 after:h-[2px] after:bg-accent">
+              Hızlı Erişim
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-accent transition-colors duration-300">Akademik Takvim</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-accent transition-colors duration-300">Ders Programı</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-accent transition-colors duration-300">Sınav Programı</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-accent transition-colors duration-300">Formlar ve Belgeler</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-accent transition-colors duration-300">Yönetmelikler</a>
+              </li>
             </ul>
           </div>
-          <div class="footer-column">
-            <h3>Bölümlerimiz</h3>
-            <ul class="footer-links">
-              <li><a href="#">Tekstil Teknolojisi</a></li>
-              <li><a href="#">Moda Tasarımı</a></li>
-              <li><a href="#">Ayakkabı Tasarım ve Üretimi</a></li>
-              <li><a href="#">Deri Teknolojisi</a></li>
+
+          <!-- Bölümlerimiz -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6 relative after:content-[''] after:absolute after:bottom-[-10px] after:left-0 after:w-16 after:h-[2px] after:bg-accent">
+              Bölümlerimiz
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-accent transition-colors duration-300">Tekstil Teknolojisi</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-accent transition-colors duration-300">Moda Tasarımı</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-accent transition-colors duration-300">Ayakkabı Tasarım ve Üretimi</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-accent transition-colors duration-300">Deri Teknolojisi</a>
+              </li>
             </ul>
           </div>
-          <div class="footer-column">
-            <h3>Sosyal Medya</h3>
-            <div class="social-links">
-              <a
-                href="https://facebook.com"
-                class="social-link"
-                target="_blank"
-                title="Facebook"
-              >
+
+          <!-- Sosyal Medya -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6 relative after:content-[''] after:absolute after:bottom-[-10px] after:left-0 after:w-16 after:h-[2px] after:bg-accent">
+              Sosyal Medya
+            </h3>
+            <div class="flex gap-4">
+              <a href="https://facebook.com" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors duration-300" target="_blank" title="Facebook">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a
-                href="https://x.com/TopcuogluMyo"
-                class="social-link"
-                target="_blank"
-                title="Twitter"
-              >
+              <a href="https://x.com/TopcuogluMyo" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors duration-300" target="_blank" title="Twitter">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a
-                href="https://instagram.com"
-                class="social-link"
-                target="_blank"
-                title="Instagram"
-              >
+              <a href="https://instagram.com" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors duration-300" target="_blank" title="Instagram">
                 <i class="fab fa-instagram"></i>
               </a>
-              <a
-                href="https://linkedin.com"
-                class="social-link"
-                target="_blank"
-                title="LinkedIn"
-              >
+              <a href="https://linkedin.com" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors duration-300" target="_blank" title="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-              <a
-                href="https://www.youtube.com/channel/UCv9EhAZPVMf8p3aCvQw0MPQ"
-                class="social-link"
-                target="_blank"
-                title="YouTube"
-              >
+              <a href="https://www.youtube.com/channel/UCv9EhAZPVMf8p3aCvQw0MPQ" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors duration-300" target="_blank" title="YouTube">
                 <i class="fab fa-youtube"></i>
               </a>
             </div>
           </div>
         </div>
-        <div class="footer-bottom">
-          <p>
-            &copy; 2024 Naci Topçuoğlu Meslek Yüksekokulu. Tüm hakları saklıdır.
-          </p>
+
+        <!-- Footer Bottom -->
+        <div class="text-center mt-16 pt-8 border-t border-white/10">
+          <p>&copy; 2024 Naci Topçuoğlu Meslek Yüksekokulu. Tüm hakları saklıdır.</p>
         </div>
       </div>
     </footer>
 
     <!-- Login Modal -->
-
-    <!-- Academic Login Modal -->
-    <div class="modal" id="academicModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>Akademisyen Girişi</h3>
-          <button class="close-modal">
-            <i class="fas fa-times"></i>
+    <div id="academicModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 backdrop-blur-sm">
+      <div class="bg-white rounded-2xl p-8 w-full max-w-md mx-4 relative">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-2xl font-semibold text-text">Akademisyen Girişi</h3>
+          <button class="text-gray-500 hover:text-gray-700 transition-colors">
+            <i class="fas fa-times text-xl"></i>
           </button>
         </div>
-        <form class="login-form" id="academicForm">
-          <div class="form-group">
-            <label for="academicId">Sicil Numarası</label>
+        <form id="academicForm" class="space-y-6">
+          <div class="space-y-2">
+            <label for="academicId" class="block text-sm font-medium text-gray-700">Sicil Numarası</label>
             <input
               type="text"
               id="academicId"
               name="academicId"
               required
               placeholder="Sicil numaranızı giriniz"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
-          <div class="form-group">
-            <label for="academicPassword">Şifre</label>
+          <div class="space-y-2">
+            <label for="academicPassword" class="block text-sm font-medium text-gray-700">Şifre</label>
             <input
               type="password"
               id="academicPassword"
               name="academicPassword"
               required
               placeholder="Şifrenizi giriniz"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
-          <button type="submit" class="login-btn">Giriş Yap</button>
-          <div class="forgot-password">
-            <a href="#">Şifremi Unuttum</a>
+          <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+            Giriş Yap
+          </button>
+          <div class="text-center">
+            <a href="#" class="text-primary hover:text-primary/80 text-sm transition-colors">Şifremi Unuttum</a>
           </div>
         </form>
       </div>
     </div>
-    <script src="main.js"></script>
+
+    <!-- Student Login Modal -->
+    <div id="studentModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 backdrop-blur-sm">
+      <div class="bg-white rounded-2xl p-8 w-full max-w-md mx-4 relative">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-2xl font-semibold text-text">Öğrenci Girişi</h3>
+          <button class="text-gray-500 hover:text-gray-700 transition-colors">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <form id="studentForm" class="space-y-6">
+          <div class="space-y-2">
+            <label for="studentId" class="block text-sm font-medium text-gray-700">Öğrenci Numarası</label>
+            <input
+              type="text"
+              id="studentId"
+              name="studentId"
+              required
+              placeholder="Öğrenci numaranızı giriniz"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+            />
+          </div>
+          <div class="space-y-2">
+            <label for="studentPassword" class="block text-sm font-medium text-gray-700">Şifre</label>
+            <input
+              type="password"
+              id="studentPassword"
+              name="studentPassword"
+              required
+              placeholder="Şifrenizi giriniz"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+            />
+          </div>
+          <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+            Giriş Yap
+          </button>
+          <div class="text-center">
+            <a href="#" class="text-primary hover:text-primary/80 text-sm transition-colors">Şifremi Unuttum</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Modal ve Mobil Menü işlemleri için JavaScript kodları
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const academicBtn = document.getElementById('academicLoginBtn');
+        const studentBtn = document.getElementById('studentLoginBtn');
+        const academicModal = document.getElementById('academicModal');
+        const studentModal = document.getElementById('studentModal');
+
+        // Mobil Menü Toggle
+        menuBtn.addEventListener('click', function() {
+          mobileNav.classList.toggle('hidden');
+          menuBtn.querySelector('i').classList.toggle('fa-bars');
+          menuBtn.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Akademisyen Modal
+        academicBtn.addEventListener('click', function() {
+          academicModal.classList.remove('hidden');
+          academicModal.classList.add('flex');
+        });
+
+        // Öğrenci Modal
+        studentBtn.addEventListener('click', function() {
+          studentModal.classList.remove('hidden');
+          studentModal.classList.add('flex');
+        });
+
+        // Modal Kapatma
+        document.querySelectorAll('.close-modal').forEach(button => {
+          button.addEventListener('click', function() {
+            academicModal.classList.add('hidden');
+            academicModal.classList.remove('flex');
+            studentModal.classList.add('hidden');
+            studentModal.classList.remove('flex');
+          });
+        });
+
+        // Modal dışına tıklama
+        window.addEventListener('click', function(e) {
+          if (e.target === academicModal) {
+            academicModal.classList.add('hidden');
+            academicModal.classList.remove('flex');
+          }
+          if (e.target === studentModal) {
+            studentModal.classList.add('hidden');
+            studentModal.classList.remove('flex');
+          }
+        });
+      });
+    </script>
+
+    <style>
+      .dropdown-menu {
+        min-width: 250px;
+        z-index: 50;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+      }
+
+      @media (max-width: 1024px) {
+        nav > ul {
+          flex-direction: column;
+          padding: 1rem;
+        }
+
+        nav > ul > li {
+          width: 100%;
+        }
+
+        .dropdown-menu {
+          position: static;
+          width: 100%;
+          box-shadow: none;
+          padding-left: 1rem;
+          opacity: 1;
+          visibility: visible;
+          display: none;
+        }
+
+        .group:hover > .dropdown-menu {
+          display: block;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        nav > ul > li > .dropdown-menu {
+          position: absolute;
+          left: 0;
+          top: 100%;
+        }
+
+        .group:hover > .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .group/submenu > .dropdown-menu {
+          position: absolute;
+          left: 100%;
+          top: 0;
+        }
+
+        .relative.group > .dropdown-menu {
+          position: absolute;
+          left: 0;
+          top: 100%;
+        }
+
+        .relative.group/submenu > .dropdown-menu {
+          position: absolute;
+          left: 100%;
+          top: 0;
+        }
+      }
+    </style>
   </body>
 </html>
