@@ -42,25 +42,72 @@
 
       /* Mobile styles */
       @media (max-width: 1024px) {
+        .header-main {
+          @apply relative;
+        }
+
+        .ntmyo-nav {
+          @apply fixed top-[135px] left-0 w-full h-[calc(100vh-135px)] bg-nav-bg overflow-y-auto;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease-in-out;
+        }
+
+        .ntmyo-nav.active {
+          transform: translateX(0);
+        }
+
         .ntmyo-nav > ul {
           @apply flex-col p-4;
         }
 
         .ntmyo-nav > ul > li {
-          @apply w-full;
+          @apply w-full border-b border-white/10 last:border-b-0;
+        }
+
+        .ntmyo-nav > ul > li > a {
+          @apply py-4;
         }
 
         .ntmyo-dropdown {
-          @apply static w-full shadow-none pl-4 opacity-100 visible hidden border-0;
+          @apply static w-full shadow-none opacity-100 visible hidden border-0 p-0;
         }
 
-        .group:hover > .ntmyo-dropdown {
+        .ntmyo-dropdown.mega-menu {
+          @apply grid-cols-1 w-full p-0;
+        }
+
+        .mega-menu .menu-section {
+          @apply p-4;
+        }
+
+        .mega-menu .menu-section h3 {
+          @apply text-base;
+        }
+
+        .group.active > .ntmyo-dropdown {
           @apply block;
+        }
+
+        /* Slider için mobil düzenlemeler */
+        .slider-container {
+          @apply h-[300px];
+        }
+
+        .slider-item img {
+          @apply object-cover;
         }
       }
 
       /* Desktop styles */
       @media (min-width: 1024px) {
+        .ntmyo-nav {
+          @apply block;
+        }
+
+        .ntmyo-nav > ul {
+          @apply flex-row;
+        }
+
         .ntmyo-nav > ul > li > .ntmyo-dropdown {
           @apply absolute left-0 top-full mt-1;
         }
@@ -142,237 +189,232 @@
               </li>
               <li class="relative group">
                 <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20">HAKKIMIZDA <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
-                <ul class="ntmyo-dropdown absolute hidden group-hover:block bg-nav-bg text-nav-text">
-                  <li>
-                    <a href="yonetim.html" class="block px-6 py-3 hover:bg-white/10">YÖNETİM KADROSU</a>
-                  </li>
-                  <li>
-                    <a href="genelbilgiler.html" class="block px-6 py-3 hover:bg-white/10">GENEL BİLGİLER</a>
-                  </li>
-                  <li>
-                    <a href="faaliyetraporları.html" class="block px-6 py-3 hover:bg-white/10">FAALİYET RAPORLARI</a>
-                  </li>
-                  <li>
-                    <a href="misyon.html" class="block px-6 py-3 hover:bg-white/10">MİSYON</a>
-                  </li>
-                  <li>
-                    <a href="vizyon.html" class="block px-6 py-3 hover:bg-white/10">VİZYON</a>
-                  </li>
-                  <li>
-                    <a href="kurullar.html" class="block px-6 py-3 hover:bg-white/10">KURULLAR</a>
-                  </li>
-                  <li>
-                    <a href="fizikialtyapı.html" class="block px-6 py-3 hover:bg-white/10">FİZİKİ ALT YAPI</a>
-                  </li>
-                  <li>
-                    <a href="organizasyonseması.html" class="block px-6 py-3 hover:bg-white/10">ORGANİZASYON ŞEMASI</a>
-                  </li>
-                  <li>
-                    <a href="argekalite.html" class="block px-6 py-3 hover:bg-white/10">ARGE/KALİTE/AGREDİTASYON(İLGİLİ FORM, RAPOR ve DÖKÜMANLAR)</a>
-                  </li>
-                  <li>
-                    <a href="ts2015.html" class="block px-6 py-3 hover:bg-white/10">TS EN ISO 9001:2015</a>
-                  </li>
-                  <li>
-                    <a href="ts2017.html" class="block px-6 py-3 hover:bg-white/10">TS EN ISO/IEC 17025:2017</a>
-                  </li>
-                  <li>
-                    <a href="nacitopcuoglukimdir.html" class="block px-6 py-3 hover:bg-white/10">NACİ TOPÇUOĞLU KİMDİR?</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="relative group">
-                <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">BÖLÜMLER <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
-                <div class="ntmyo-dropdown absolute hidden group-hover:block bg-nav-bg left-1/2 -translate-x-1/2 w-[500px] p-6 grid grid-cols-3 gap-8 rounded-xl border border-white/10">
-                  <div>
-                    <h3 class="text-accent font-semibold text-lg mb-4 pb-2 border-b border-white/10">El Sanatları</h3>
-                    <div class="space-y-1">
-                      <div class="group/sub">
-                        <div class="flex items-center justify-between p-2 hover:bg-white/5 rounded-lg cursor-pointer">
-                          <span class="text-white text-sm font-medium">HALICILIK VE KİLİMCİLİK</span>
-                          <i class="fas fa-chevron-right text-xs text-white/50 group-hover/sub:text-accent"></i>
-                        </div>
-                        <div class="hidden group-hover/sub:block pl-4 mt-1 space-y-1">
-                          <a href="#" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">KUYUMCULUK VE TAKI TASARIMI</a>
-                          <a href="#" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">MİMARİ DEKORATİF SANATLAR</a>
-                          <a href="#" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">KUYUMCULUK VE TAKI TASARIMI</a>
-                        </div>
-                      </div>
-                      <div class="group/sub">
-                        <div class="flex items-center justify-between p-2 hover:bg-white/5 rounded-lg cursor-pointer">
-                          
-                          <i class="fas fa-chevron-right text-xs text-white/50 group-hover/sub:text-accent"></i>
-                        </div>
-                        <div class="hidden group-hover/sub:block pl-4 mt-1 space-y-1">
-                        
-                        </div>
-                      </div>
+                <div class="ntmyo-dropdown mega-menu">
+                  <div class="menu-section">
+                    <h3>Kurumsal</h3>
+                    <div class="sub-menu">
+                      <a href="yonetim.html">YÖNETİM KADROSU</a>
+                      <a href="genelbilgiler.html">GENEL BİLGİLER</a>
+                      <a href="faaliyetraporları.html">FAALİYET RAPORLARI</a>
                     </div>
                   </div>
-                  <div>
-                    <h3 class="text-accent font-semibold text-lg mb-4 pb-2 border-b border-white/10">Tasarım Bölümleri</h3>
-                    <div class="space-y-1">
-                      <div class="group/sub">
-                        <div class="flex items-center justify-between p-2 hover:bg-white/5 rounded-lg cursor-pointer">
-                          <span class="text-white text-sm font-medium">El Sanatları</span>
-                          <i class="fas fa-chevron-right text-xs text-white/50 group-hover/sub:text-accent"></i>
-                        </div>
-                        <div class="hidden group-hover/sub:block pl-4 mt-1 space-y-1">
-                          <a href="halıcılıkvekilimcilik.html" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">Halıcılık ve Kilimcilik</a>
-                          <a href="mimaridekoratifsanatları.html" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">Mimari Dekoratif Sanatlar</a>
-                          <a href="kuyumculukvetakıtasarım.html" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">Kuyumculuk ve Takı Tasarım</a>
-                        </div>
-                      </div>
-                      <div class="group/sub">
-                        <div class="flex items-center justify-between p-2 hover:bg-white/5 rounded-lg cursor-pointer">
-                          <span class="text-white text-sm font-medium">Tekstil ve Moda</span>
-                          <i class="fas fa-chevron-right text-xs text-white/50 group-hover/sub:text-accent"></i>
-                        </div>
-                        <div class="hidden group-hover/sub:block pl-4 mt-1 space-y-1">
-                          <a href="#" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">Tekstil Teknolojisi</a>
-                          <a href="#" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">Giyim Üretim Teknolojisi</a>
-                        </div>
-                      </div>
+                  <div class="menu-section">
+                    <h3>Vizyon & Misyon</h3>
+                    <div class="sub-menu">
+                      <a href="misyon.html">MİSYON</a>
+                      <a href="vizyon.html">VİZYON</a>
+                      <a href="kurullar.html">KURULLAR</a>
                     </div>
                   </div>
-                  <div>
-                    <h3 class="text-accent font-semibold text-lg mb-4 pb-2 border-b border-white/10">Üretim Bölümleri</h3>
-                    <div class="space-y-1">
-                      <div class="group/sub">
-                        <div class="flex items-center justify-between p-2 hover:bg-white/5 rounded-lg cursor-pointer">
-                          <span class="text-white text-sm font-medium">Gıda İşleme</span>
-                          <i class="fas fa-chevron-right text-xs text-white/50 group-hover/sub:text-accent"></i>
-                        </div>
-                        <div class="hidden group-hover/sub:block pl-4 mt-1 space-y-1">
-                          <a href="#" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">Un ve Unlu Mamüller</a>
-                          <a href="#" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">Gıda Teknolojisi</a>
-                          <a href="#" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">Gıda Kalite Kontrolü</a>
-                        </div>
-                      </div>
-                      <div class="group/sub">
-                        <div class="flex items-center justify-between p-2 hover:bg-white/5 rounded-lg cursor-pointer">
-                          <span class="text-white text-sm font-medium">Makina ve Metal</span>
-                          <i class="fas fa-chevron-right text-xs text-white/50 group-hover/sub:text-accent"></i>
-                        </div>
-                        <div class="hidden group-hover/sub:block pl-4 mt-1 space-y-1">
-                          <a href="#" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">Makine</a>
-                          <a href="#" class="block p-2 text-sm text-white/80 hover:text-accent hover:bg-white/5 rounded-lg">İmalat Sistemleri</a>
-                        </div>
-                      </div>
+                  <div class="menu-section">
+                    <h3>Altyapı & Organizasyon</h3>
+                    <div class="sub-menu">
+                      <a href="fizikialtyapı.html">FİZİKİ ALT YAPI</a>
+                      <a href="organizasyonseması.html">ORGANİZASYON ŞEMASI</a>
+                      <a href="argekalite.html">ARGE/KALİTE/AGREDİTASYON</a>
+                      <a href="ts2015.html">TS EN ISO 9001:2015</a>
+                      <a href="ts2017.html">TS EN ISO/IEC 17025:2017</a>
+                      <a href="nacitopcuoglukimdir.html">NACİ TOPÇUOĞLU KİMDİR?</a>
                     </div>
                   </div>
                 </div>
               </li>
               <li class="relative group">
-                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20">PERSONEL</a>
-                <ul class="ntmyo-dropdown absolute hidden group-hover:block bg-nav-bg text-nav-text">
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">AKADEMİK PERSONEL</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">İDARİ PERSONEL</a>
-                  </li>
-                </ul>
+                <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">BÖLÜMLER <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
+                <div class="ntmyo-dropdown mega-menu">
+                  <div class="menu-section">
+                    <h3>El Sanatları</h3>
+                    <div class="sub-menu">
+                      <a href="halıcılıkvekilimcilik.html">HALICILIK VE KİLİMCİLİK</a>
+                      <a href="mimaridekoratifsanatları.html">MİMARİ DEKORATİF SANATLAR</a>
+                      <a href="kuyumculukvetakıtasarım.html">KUYUMCULUK VE TAKI TASARIM</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Tasarım Bölümleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">TEKSTİL TEKNOLOJİSİ</a>
+                      <a href="#">GİYİM ÜRETİM TEKNOLOJİSİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Üretim Bölümleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">UN VE UNLU MAMÜLLER</a>
+                      <a href="#">GIDA TEKNOLOJİSİ</a>
+                      <a href="#">GIDA KALİTE KONTROLÜ</a>
+                      <a href="#">MAKİNE</a>
+                      <a href="#">İMALAT SİSTEMLERİ</a>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="relative group">
-                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20">ÖĞRENCİ</a>
-                <ul class="ntmyo-dropdown absolute hidden group-hover:block bg-nav-bg text-nav-text">
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">MEVZUAT</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">YÖNETMELİK</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">DERS İÇERİKLERİ</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">FORMLAR</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">AKADEMİK TAKVİM</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">TRİMESTER VE İŞYERİ EĞİTİMİ</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">ÇİF ANADAL VE YAN ANADAL KATALOĞU(2025)</a>
-                  </li>
-                </ul>
+                <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">PERSONEL <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
+                <div class="ntmyo-dropdown mega-menu">
+                  <div class="menu-section">
+                    <h3>Akademik Personel</h3>
+                    <div class="sub-menu">
+                      <a href="#">PROFESÖRLER</a>
+                      <a href="#">DOÇENTLER</a>
+                      <a href="#">DR. ÖĞRETİM ÜYELERİ</a>
+                      <a href="#">ÖĞRETİM GÖREVLİLERİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>İdari Personel</h3>
+                    <div class="sub-menu">
+                      <a href="#">MÜDÜRLÜK</a>
+                      <a href="#">MÜDÜR YARDIMCILARI</a>
+                      <a href="#">YÜKSEKOKUL SEKRETERLİĞİ</a>
+                      <a href="#">İDARİ BİRİMLER</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Diğer</h3>
+                    <div class="sub-menu">
+                      <a href="#">AKADEMİK CV</a>
+                      <a href="#">PERSONEL PORTALI</a>
+                      <a href="#">PERSONEL BİLGİ SİSTEMİ</a>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="relative group">
-                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20">KURULLAR</a>
-                <ul class="ntmyo-dropdown absolute hidden group-hover:block bg-nav-bg text-nav-text">
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">YÖNETİM</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">YÖNETİM KURULU</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">YÜKSEKOKUL KURULU</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">DANIŞMA KURULLARI</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">PROJE KURULU</a>
-                  </li>
-                </ul>
+                <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">ÖĞRENCİ <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
+                <div class="ntmyo-dropdown mega-menu">
+                  <div class="menu-section">
+                    <h3>Öğrenci İşlemleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">MEVZUAT</a>
+                      <a href="#">YÖNETMELİK</a>
+                      <a href="#">DERS İÇERİKLERİ</a>
+                      <a href="#">FORMLAR</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Akademik</h3>
+                    <div class="sub-menu">
+                      <a href="#">AKADEMİK TAKVİM</a>
+                      <a href="#">TRİMESTER VE İŞYERİ EĞİTİMİ</a>
+                      <a href="#">ÇİFT ANADAL VE YAN ANADAL</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Öğrenci Hizmetleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">ÖĞRENCİ BİLGİ SİSTEMİ</a>
+                      <a href="#">KÜTÜPHANE</a>
+                      <a href="#">YEMEKHANE</a>
+                      <a href="#">SPOR TESİSLERİ</a>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="relative group">
-                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20">ATÖLYELER</a>
-                <ul class="ntmyo-dropdown absolute hidden group-hover:block bg-nav-bg text-nav-text">
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">MAKİNA HALISI DOKUMA ATÖLYESİ</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">CAM VE SERAMİK İŞLEME ATÖLYESİ</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">KUTNU VE KİLİM DOKUMA ATÖLYESİ</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">AYAKKABI TASARIMI VE İMALAT ATÖLYESİ</a>
-                  </li>
-                </ul>
+                <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">KURULLAR <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
+                <div class="ntmyo-dropdown mega-menu">
+                  <div class="menu-section">
+                    <h3>Yönetim Kurulları</h3>
+                    <div class="sub-menu">
+                      <a href="#">YÖNETİM</a>
+                      <a href="#">YÖNETİM KURULU</a>
+                      <a href="#">YÜKSEKOKUL KURULU</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Danışma Kurulları</h3>
+                    <div class="sub-menu">
+                      <a href="#">DANIŞMA KURULLARI</a>
+                      <a href="#">PROJE KURULU</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Komisyonlar</h3>
+                    <div class="sub-menu">
+                      <a href="#">KALİTE KOMİSYONU</a>
+                      <a href="#">STAJ KOMİSYONU</a>
+                      <a href="#">EĞİTİM KOMİSYONU</a>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="relative group">
-                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20">TEST LAB.</a>
+                <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">ATÖLYELER <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
+                <div class="ntmyo-dropdown mega-menu">
+                  <div class="menu-section">
+                    <h3>Dokuma Atölyeleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">MAKİNA HALISI DOKUMA ATÖLYESİ</a>
+                      <a href="#">KUTNU VE KİLİM DOKUMA ATÖLYESİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Sanat Atölyeleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">CAM VE SERAMİK İŞLEME ATÖLYESİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Üretim Atölyeleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">AYAKKABI TASARIMI VE İMALAT ATÖLYESİ</a>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="relative group">
-                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20">ÜRÜNLER</a>
-                <ul class="ntmyo-dropdown absolute hidden group-hover:block bg-nav-bg text-nav-text">
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">HALI VE KİLİM DOKUMA ÜRÜNLERİ</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">CAM İŞLEME ATÖLYESİ ÜRÜNLERİ</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">KUTNU DOKUMA ATÖLYESİ ÜRÜNLERİ</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">AYAKKABI TASARIMI VE İMALAT ATÖLYESİ ÜRÜNLERİ</a>
-                  </li>
-                </ul>
+                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">TEST LAB.</a>
               </li>
               <li class="relative group">
-                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20">ANKETLER</a>
-                <ul class="ntmyo-dropdown absolute hidden group-hover:block bg-nav-bg text-nav-text">
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">ÖĞRENCİ MEMNUNİYETİ ANKETLERİ</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">İŞYERİ MEMNUNİYET ANKETİ</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-6 py-3 hover:bg-white/10">PERSONEL MEMNUNİYET ANKETİ</a>
-                  </li>
-                </ul>
+                <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">ÜRÜNLER <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
+                <div class="ntmyo-dropdown mega-menu">
+                  <div class="menu-section">
+                    <h3>Dokuma Ürünleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">HALI VE KİLİM DOKUMA ÜRÜNLERİ</a>
+                      <a href="#">KUTNU DOKUMA ATÖLYESİ ÜRÜNLERİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Sanat Ürünleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">CAM İŞLEME ATÖLYESİ ÜRÜNLERİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Diğer Ürünler</h3>
+                    <div class="sub-menu">
+                      <a href="#">AYAKKABI TASARIMI VE İMALAT ATÖLYESİ ÜRÜNLERİ</a>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="relative group">
-                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10 active:bg-white/20">İLETİŞİM</a>
+                <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">ANKETLER <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
+                <div class="ntmyo-dropdown mega-menu">
+                  <div class="menu-section">
+                    <h3>Öğrenci Anketleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">ÖĞRENCİ MEMNUNİYETİ ANKETLERİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>İş Dünyası Anketleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">İŞYERİ MEMNUNİYET ANKETİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>Personel Anketleri</h3>
+                    <div class="sub-menu">
+                      <a href="#">PERSONEL MEMNUNİYET ANKETİ</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="relative group">
+                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">İLETİŞİM</a>
               </li>
             </ul>
           </nav>
@@ -465,13 +507,32 @@
         // Mobil menü toggle
         const menuBtn = document.getElementById('menuBtn');
         const mobileNav = document.getElementById('mobileNav');
+        const dropdownButtons = document.querySelectorAll('.group > a');
         
         menuBtn.addEventListener('click', () => {
           mobileNav.classList.toggle('hidden');
+          mobileNav.classList.toggle('active');
           const icon = menuBtn.querySelector('i');
           icon.classList.toggle('fa-bars');
           icon.classList.toggle('fa-times');
         });
+
+        // Mobil dropdown toggle
+        if (window.innerWidth <= 1024) {
+          dropdownButtons.forEach(button => {
+            if (button.querySelector('i.fa-chevron-down')) {
+              button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const parent = button.parentElement;
+                const dropdown = parent.querySelector('.ntmyo-dropdown');
+                const icon = button.querySelector('i.fa-chevron-down');
+                
+                parent.classList.toggle('active');
+                icon.style.transform = parent.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+              });
+            }
+          });
+        }
 
         // Slider functionality
         const sliderItems = document.querySelectorAll('.slider-item');
@@ -512,10 +573,23 @@
         });
 
         // Auto slide
-        setInterval(() => {
+        let slideInterval = setInterval(() => {
           currentSlide = (currentSlide + 1) % sliderItems.length;
           showSlide(currentSlide);
         }, 5000);
+
+        // Slider container hover
+        const sliderContainer = document.querySelector('.slider-container');
+        sliderContainer.addEventListener('mouseenter', () => {
+          clearInterval(slideInterval);
+        });
+
+        sliderContainer.addEventListener('mouseleave', () => {
+          slideInterval = setInterval(() => {
+            currentSlide = (currentSlide + 1) % sliderItems.length;
+            showSlide(currentSlide);
+          }, 5000);
+        });
 
         // Click handlers for dots
         dots.forEach((dot, index) => {
@@ -523,6 +597,16 @@
             currentSlide = index;
             showSlide(currentSlide);
           });
+        });
+
+        // Resize handler for responsive
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 1024) {
+            mobileNav.classList.remove('active');
+            mobileNav.classList.add('hidden');
+            menuBtn.querySelector('i').classList.remove('fa-times');
+            menuBtn.querySelector('i').classList.add('fa-bars');
+          }
         });
       });
     </script>
