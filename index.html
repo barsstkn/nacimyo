@@ -33,11 +33,82 @@
     <style>
       /* Dropdown menu styles */
       .ntmyo-dropdown {
-        @apply min-w-[250px] z-50 shadow-lg opacity-0 invisible transition-opacity duration-200 bg-nav-bg border border-white/10 rounded-lg overflow-hidden;
+        display: none !important;
+        position: absolute;
+        min-width: 250px;
+        z-index: 50;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        background-color: #1a365d;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
       }
 
-      .ntmyo-dropdown a {
-        @apply block px-6 py-3 text-nav-text hover:bg-white/10 transition-all text-sm;
+      .ntmyo-dropdown.mega-menu {
+        width: 800px;
+        left: 0;
+        transform: translateY(10px);
+        padding: 1.5rem;
+        display: none;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      /* Sağdaki menüler için özel stil */
+      .align-right .ntmyo-dropdown.mega-menu {
+        left: auto;
+        right: 0;
+        transform: translateY(10px);
+      }
+
+      .align-right.group.active .ntmyo-dropdown.mega-menu,
+      .align-right.group:hover .ntmyo-dropdown.mega-menu {
+        transform: translateY(0);
+      }
+
+      .mega-menu .menu-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .mega-menu .menu-section h3 {
+        color: #3182ce;
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .mega-menu .menu-section .sub-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .mega-menu .menu-section .sub-menu a {
+        color: #ffffff;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+        transition: all 0.2s ease;
+        border-radius: 0.25rem;
+      }
+
+      .mega-menu .menu-section .sub-menu a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .group.active .ntmyo-dropdown,
+      .group:hover .ntmyo-dropdown {
+        display: grid !important;
+      }
+
+      .group.active .ntmyo-dropdown.mega-menu,
+      .group:hover .ntmyo-dropdown.mega-menu {
+        transform: translateY(0);
       }
 
       /* Mobile styles */
@@ -57,7 +128,7 @@
         }
 
         .ntmyo-nav > ul {
-          @apply flex-col p-4;
+          @apply flex-col p-4 space-y-2;
         }
 
         .ntmyo-nav > ul > li {
@@ -65,27 +136,55 @@
         }
 
         .ntmyo-nav > ul > li > a {
-          @apply py-4;
+          @apply py-4 px-4 text-base;
         }
 
         .ntmyo-dropdown {
-          @apply static w-full shadow-none opacity-100 visible hidden border-0 p-0;
+          position: static;
+          width: 100%;
+          box-shadow: none;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          margin-top: 0.5rem;
+          background-color: rgba(255, 255, 255, 0.05);
+          transform: none;
         }
 
-        .ntmyo-dropdown.mega-menu {
-          @apply grid-cols-1 w-full p-0;
+        .ntmyo-dropdown.mega-menu,
+        .align-right .ntmyo-dropdown.mega-menu {
+          width: 100%;
+          left: 0;
+          right: auto;
+          transform: none;
+          padding: 1rem;
+          grid-template-columns: 1fr;
+          gap: 1rem;
         }
 
         .mega-menu .menu-section {
-          @apply p-4;
+          gap: 0.5rem;
         }
 
         .mega-menu .menu-section h3 {
-          @apply text-base;
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
         }
 
-        .group.active > .ntmyo-dropdown {
-          @apply block;
+        .mega-menu .menu-section .sub-menu a {
+          padding: 0.5rem 1rem;
+        }
+
+        .group.active .ntmyo-dropdown {
+          display: grid !important;
+          transform: none;
+        }
+
+        /* Mobil menü ok ikonları için stil */
+        .group > a > i.fa-chevron-down {
+          @apply transition-transform duration-300;
+        }
+
+        .group.active > a > i.fa-chevron-down {
+          @apply rotate-180;
         }
 
         /* Slider için mobil düzenlemeler */
@@ -108,12 +207,9 @@
           @apply flex-row;
         }
 
-        .ntmyo-nav > ul > li > .ntmyo-dropdown {
-          @apply absolute left-0 top-full mt-1;
-        }
-
-        .group:hover > .ntmyo-dropdown {
-          @apply opacity-100 visible;
+        .group:hover .ntmyo-dropdown {
+          @apply block;
+          transform: translateY(0);
         }
 
         .ntmyo-dropdown.mega-menu {
@@ -339,7 +435,7 @@
                   </div>
                 </div>
               </li>
-              <li class="relative group">
+              <li class="relative group align-right">
                 <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">ATÖLYELER <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
                 <div class="ntmyo-dropdown mega-menu">
                   <div class="menu-section">
@@ -363,10 +459,7 @@
                   </div>
                 </div>
               </li>
-              <li class="relative group">
-                <a href="#" class="flex items-center px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">TEST LAB.</a>
-              </li>
-              <li class="relative group">
+              <li class="relative group align-right">
                 <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">ÜRÜNLER <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
                 <div class="ntmyo-dropdown mega-menu">
                   <div class="menu-section">
@@ -390,7 +483,7 @@
                   </div>
                 </div>
               </li>
-              <li class="relative group">
+              <li class="relative group align-right">
                 <a href="#" class="flex items-center justify-between px-6 py-3 text-nav-text no-underline font-medium text-sm transition-all hover:bg-white/10">ANKETLER <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i></a>
                 <div class="ntmyo-dropdown mega-menu">
                   <div class="menu-section">
@@ -504,17 +597,23 @@
     <!-- Slider JavaScript -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Mobil menü toggle
         const menuBtn = document.getElementById('menuBtn');
         const mobileNav = document.getElementById('mobileNav');
         const dropdownButtons = document.querySelectorAll('.group > a');
         
+        // Mobil menü toggle
         menuBtn.addEventListener('click', () => {
           mobileNav.classList.toggle('hidden');
           mobileNav.classList.toggle('active');
+          document.body.classList.toggle('overflow-hidden');
           const icon = menuBtn.querySelector('i');
           icon.classList.toggle('fa-bars');
           icon.classList.toggle('fa-times');
+        });
+
+        // Tüm dropdown menüleri başlangıçta kapat
+        document.querySelectorAll('.group').forEach(group => {
+          group.classList.remove('active');
         });
 
         // Mobil dropdown toggle
@@ -523,12 +622,53 @@
             if (button.querySelector('i.fa-chevron-down')) {
               button.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 const parent = button.parentElement;
-                const dropdown = parent.querySelector('.ntmyo-dropdown');
-                const icon = button.querySelector('i.fa-chevron-down');
+                
+                // Diğer açık menüleri kapat
+                document.querySelectorAll('.group').forEach(group => {
+                  if (group !== parent) {
+                    group.classList.remove('active');
+                  }
+                });
                 
                 parent.classList.toggle('active');
-                icon.style.transform = parent.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+              });
+            }
+          });
+        }
+
+        // Masaüstünde dropdown menüleri kapat
+        document.addEventListener('click', (e) => {
+          if (window.innerWidth > 1024) {
+            const isDropdownButton = e.target.closest('.group > a');
+            const isDropdownMenu = e.target.closest('.ntmyo-dropdown');
+            
+            if (!isDropdownButton && !isDropdownMenu) {
+              document.querySelectorAll('.group').forEach(group => {
+                group.classList.remove('active');
+              });
+            }
+          }
+        });
+
+        // Hover yerine click ile açılması için
+        if (window.innerWidth > 1024) {
+          dropdownButtons.forEach(button => {
+            if (button.querySelector('i.fa-chevron-down')) {
+              button.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const parent = button.parentElement;
+                
+                // Diğer açık menüleri kapat
+                document.querySelectorAll('.group').forEach(group => {
+                  if (group !== parent) {
+                    group.classList.remove('active');
+                  }
+                });
+                
+                parent.classList.toggle('active');
               });
             }
           });
