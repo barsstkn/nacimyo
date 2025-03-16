@@ -117,8 +117,26 @@
           @apply relative;
         }
 
+        /* Logo ve başlık düzenlemesi */
+        .header-main img {
+          @apply h-[60px] w-[60px];
+        }
+
+        .header-main h1 {
+          @apply text-lg;
+        }
+
+        .header-main p {
+          @apply text-sm;
+        }
+
+        .header-main .border-l-[3px] {
+          @apply border-l-2 pl-4;
+        }
+
+        /* Mobil menü düzenlemesi */
         .ntmyo-nav {
-          @apply fixed top-[135px] left-0 w-full h-[calc(100vh-135px)] bg-nav-bg overflow-y-auto hidden;
+          @apply fixed top-[100px] left-0 w-full h-[calc(100vh-100px)] bg-nav-bg overflow-y-auto hidden;
           transform: translateX(-100%);
           transition: transform 0.3s ease-in-out;
         }
@@ -137,7 +155,7 @@
         }
 
         .ntmyo-nav > ul > li > a {
-          @apply py-4 px-4 text-base w-full flex items-center justify-between;
+          @apply py-3 px-4 text-sm w-full flex items-center justify-between;
         }
 
         .ntmyo-dropdown {
@@ -156,7 +174,7 @@
         }
 
         .mega-menu .menu-section h3 {
-          @apply text-base mb-2 pb-2;
+          @apply text-sm mb-2 pb-2 text-accent;
         }
 
         .mega-menu .menu-section .sub-menu {
@@ -164,7 +182,7 @@
         }
 
         .mega-menu .menu-section .sub-menu a {
-          @apply py-2 px-4 text-sm border-l-2 border-white/10;
+          @apply py-2 px-4 text-xs border-l border-white/10;
         }
 
         .group.active .ntmyo-dropdown {
@@ -177,22 +195,6 @@
 
         .group.active > a > i.fa-chevron-down {
           @apply rotate-180;
-        }
-
-        .header-main .flex.items-center.gap-6 {
-          @apply flex-col text-center;
-        }
-
-        .header-main .border-l-[3px] {
-          @apply border-l-0 pl-0 mt-2;
-        }
-
-        .header-main h1 {
-          @apply text-xl;
-        }
-
-        .header-main p {
-          @apply text-base;
         }
       }
 
@@ -246,25 +248,20 @@
 
   <body class="font-['Poppins'] leading-relaxed text-text bg-bg-light">
     <header class="fixed w-full top-0 left-0 z-[1000] bg-nav-bg">
-      <div class="header-main p-0 h-auto
-       bg-nav-bg">
-        <div class="max-w-[1400px] mx-auto px-5">
-          <div class="flex items-center justify-between py-6 px-8 bg-nav-bg mt-0">
-            <a href="#" class="flex items-center gap-6 no-underline">
+      <div class="header-main p-0 h-auto bg-nav-bg">
+        <div class="max-w-[1400px] mx-auto px-4">
+          <div class="flex items-center justify-between py-4 px-4 bg-nav-bg mt-0">
+            <a href="#" class="flex items-center gap-4 no-underline">
               <img
                 src="https://pbs.twimg.com/profile_images/1023869108474064896/GehvVKTY_400x400.jpg"
-                class="h-[90px] w-[90px] transition-all duration-300 rounded-full shadow-md bg-white p-[3px]"
+                class="h-[60px] w-[60px] transition-all duration-300 rounded-full shadow-md bg-white p-[2px] lg:h-[90px] lg:w-[90px] lg:p-[3px]"
                 alt="GAÜN Logo"
               />
-              <div class="border-l-[3px] border-white/30 pl-6">
-                <h1
-                  class="text-2xl font-bold text-white leading-tight uppercase mb-1"
-                >
+              <div class="border-l-2 border-white/30 pl-4 lg:border-l-[3px] lg:pl-6">
+                <h1 class="text-lg font-bold text-white leading-tight uppercase mb-1 lg:text-2xl">
                   NACİ TOPÇUOĞLU
                 </h1>
-                <p
-                  class="text-lg text-white/90 font-medium uppercase tracking-wider"
-                >
+                <p class="text-sm text-white/90 font-medium uppercase tracking-wider lg:text-lg">
                   Meslek Yüksekokulu
                 </p>
               </div>
