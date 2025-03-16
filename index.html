@@ -118,67 +118,59 @@
         }
 
         .ntmyo-nav {
-          @apply fixed top-[135px] left-0 w-full h-[calc(100vh-135px)] bg-nav-bg overflow-y-auto;
+          @apply fixed top-[135px] left-0 w-full h-[calc(100vh-135px)] bg-nav-bg overflow-y-auto hidden;
           transform: translateX(-100%);
           transition: transform 0.3s ease-in-out;
         }
 
         .ntmyo-nav.active {
+          @apply block;
           transform: translateX(0);
         }
 
         .ntmyo-nav > ul {
-          @apply flex-col p-4 space-y-2;
+          @apply flex-col p-4 space-y-0;
         }
 
         .ntmyo-nav > ul > li {
-          @apply w-full border-b border-white/10 last:border-b-0;
+          @apply w-full border-b border-white/10;
         }
 
         .ntmyo-nav > ul > li > a {
-          @apply py-4 px-4 text-base;
+          @apply py-4 px-4 text-base w-full flex items-center justify-between;
         }
 
         .ntmyo-dropdown {
-          position: static;
-          width: 100%;
-          box-shadow: none;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-          margin-top: 0.5rem;
-          background-color: rgba(255, 255, 255, 0.05);
-          transform: none;
+          @apply static w-full shadow-none border-t border-white/10 mt-0 bg-[rgba(255,255,255,0.05)] hidden;
+          transform: none !important;
         }
 
-        .ntmyo-dropdown.mega-menu,
-        .align-right .ntmyo-dropdown.mega-menu {
-          width: 100%;
-          left: 0;
-          right: auto;
-          transform: none;
-          padding: 1rem;
-          grid-template-columns: 1fr;
-          gap: 1rem;
+        .ntmyo-dropdown.mega-menu {
+          @apply w-full p-4 grid grid-cols-1 gap-4;
+          left: 0 !important;
+          right: auto !important;
         }
 
         .mega-menu .menu-section {
-          gap: 0.5rem;
+          @apply mb-4 last:mb-0;
         }
 
         .mega-menu .menu-section h3 {
-          font-size: 1rem;
-          margin-bottom: 0.5rem;
+          @apply text-base mb-2 pb-2;
+        }
+
+        .mega-menu .menu-section .sub-menu {
+          @apply pl-4;
         }
 
         .mega-menu .menu-section .sub-menu a {
-          padding: 0.5rem 1rem;
+          @apply py-2 px-4 text-sm border-l-2 border-white/10;
         }
 
         .group.active .ntmyo-dropdown {
-          display: grid !important;
-          transform: none;
+          @apply block;
         }
 
-        /* Mobil menü ok ikonları için stil */
         .group > a > i.fa-chevron-down {
           @apply transition-transform duration-300;
         }
@@ -187,18 +179,25 @@
           @apply rotate-180;
         }
 
-        /* Slider için mobil düzenlemeler */
-        .slider-container {
-          @apply h-[300px];
+        .header-main .flex.items-center.gap-6 {
+          @apply flex-col text-center;
         }
 
-        .slider-item img {
-          @apply object-cover;
+        .header-main .border-l-[3px] {
+          @apply border-l-0 pl-0 mt-2;
+        }
+
+        .header-main h1 {
+          @apply text-xl;
+        }
+
+        .header-main p {
+          @apply text-base;
         }
       }
 
       /* Desktop styles */
-      @media (min-width: 1024px) {
+      @media (min-width: 1025px) {
         .ntmyo-nav {
           @apply block;
         }
@@ -207,25 +206,25 @@
           @apply flex-row;
         }
 
-        .group:hover .ntmyo-dropdown {
+        .ntmyo-dropdown.mega-menu {
+          @apply hidden;
+          width: 800px;
+          left: 0;
+          transform: translateY(10px);
+          padding: 1.5rem;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+
+        .align-right .ntmyo-dropdown.mega-menu {
+          left: auto;
+          right: 0;
+        }
+
+        .group:hover .ntmyo-dropdown,
+        .group.active .ntmyo-dropdown {
           @apply block;
           transform: translateY(0);
-        }
-
-        .ntmyo-dropdown.mega-menu {
-          @apply left-1/2 -translate-x-1/2 w-[800px] p-6 grid grid-cols-3 gap-8;
-        }
-
-        .mega-menu .menu-section {
-          @apply space-y-4;
-        }
-
-        .mega-menu .menu-section h3 {
-          @apply text-accent font-semibold text-lg mb-4 pb-2 border-b border-white/10;
-        }
-
-        .mega-menu .menu-section .sub-menu {
-          @apply space-y-1;
         }
       }
 
