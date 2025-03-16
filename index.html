@@ -114,102 +114,140 @@
       /* Mobile styles */
       @media (max-width: 1024px) {
         .header-main {
-          @apply relative;
+          position: relative;
         }
 
         /* Logo ve başlık düzenlemesi */
         .header-main img {
-          @apply h-[60px] w-[60px];
+          height: 60px;
+          width: 60px;
         }
 
         .header-main h1 {
-          @apply text-lg;
+          font-size: 1.125rem;
         }
 
         .header-main p {
-          @apply text-sm;
+          font-size: 0.875rem;
         }
 
-        .header-main .border-l-[3px] {
-          @apply border-l-2 pl-4;
+        .header-main .border-l-3 {
+          border-left-width: 3px;
+          padding-left: 1rem;
         }
 
         /* Mobil menü düzenlemesi */
         .ntmyo-nav {
-          @apply fixed top-[100px] left-0 w-full h-[calc(100vh-100px)] bg-nav-bg overflow-y-auto hidden;
+          position: fixed;
+          top: 100px;
+          left: 0;
+          width: 100%;
+          height: calc(100vh - 100px);
+          background-color: #1a365d;
+          overflow-y: auto;
+          display: none;
           transform: translateX(-100%);
           transition: transform 0.3s ease-in-out;
         }
 
         .ntmyo-nav.active {
-          @apply block;
+          display: block;
           transform: translateX(0);
         }
 
         .ntmyo-nav > ul {
-          @apply flex-col p-4 space-y-0;
+          display: flex;
+          flex-direction: column;
+          padding: 1rem;
+          gap: 0;
         }
 
         .ntmyo-nav > ul > li {
-          @apply w-full border-b border-white/10;
+          width: 100%;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .ntmyo-nav > ul > li > a {
-          @apply py-3 px-4 text-sm w-full flex items-center justify-between;
+          padding: 0.75rem 1rem;
+          font-size: 0.875rem;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
 
         .ntmyo-dropdown {
-          @apply static w-full shadow-none border-t border-white/10 mt-0 bg-[rgba(255,255,255,0.05)] hidden;
+          position: static;
+          width: 100%;
+          box-shadow: none;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          margin-top: 0;
+          background-color: rgba(255, 255, 255, 0.05);
+          display: none;
           transform: none !important;
         }
 
         .ntmyo-dropdown.mega-menu {
-          @apply w-full p-4 grid grid-cols-1 gap-4;
+          width: 100%;
+          padding: 1rem;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1rem;
           left: 0 !important;
           right: auto !important;
         }
 
         .mega-menu .menu-section {
-          @apply mb-4 last:mb-0;
+          margin-bottom: 1rem;
+        }
+
+        .mega-menu .menu-section:last-child {
+          margin-bottom: 0;
         }
 
         .mega-menu .menu-section h3 {
-          @apply text-sm mb-2 pb-2 text-accent;
+          font-size: 0.875rem;
+          margin-bottom: 0.5rem;
+          padding-bottom: 0.5rem;
+          color: #3182ce;
         }
 
         .mega-menu .menu-section .sub-menu {
-          @apply pl-4;
+          padding-left: 1rem;
         }
 
         .mega-menu .menu-section .sub-menu a {
-          @apply py-2 px-4 text-xs border-l border-white/10;
+          padding: 0.5rem 1rem;
+          font-size: 0.75rem;
+          border-left: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .group.active .ntmyo-dropdown {
-          @apply block;
+          display: block;
         }
 
         .group > a > i.fa-chevron-down {
-          @apply transition-transform duration-300;
+          transition: transform 0.3s;
         }
 
         .group.active > a > i.fa-chevron-down {
-          @apply rotate-180;
+          transform: rotate(180deg);
         }
       }
 
       /* Desktop styles */
       @media (min-width: 1025px) {
         .ntmyo-nav {
-          @apply block;
+          display: block;
         }
 
         .ntmyo-nav > ul {
-          @apply flex-row;
+          display: flex;
+          flex-direction: row;
         }
 
         .ntmyo-dropdown.mega-menu {
-          @apply hidden;
+          display: none;
           width: 800px;
           left: 0;
           transform: translateY(10px);
@@ -225,23 +263,24 @@
 
         .group:hover .ntmyo-dropdown,
         .group.active .ntmyo-dropdown {
-          @apply block;
+          display: block;
           transform: translateY(0);
         }
       }
 
       /* Custom animations */
       .slide-down {
-        @apply transition-all duration-300 transform;
+        transition: all 0.3s;
+        transform: translateY(0);
       }
 
       .slide-down:hover {
-        @apply -translate-y-1;
+        transform: translateY(-0.25rem); /* Equivalent to -translate-y-1 */
       }
 
       /* Custom shadows */
       .custom-shadow {
-        @apply shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)];
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       }
     </style>
   </head>
