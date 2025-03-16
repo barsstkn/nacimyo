@@ -33,7 +33,11 @@
     <style>
       /* Dropdown menu styles */
       .ntmyo-dropdown {
-        @apply min-w-[250px] z-50 shadow-lg opacity-0 invisible transition-opacity duration-200;
+        @apply min-w-[250px] z-50 shadow-lg opacity-0 invisible transition-opacity duration-200 bg-nav-bg border border-white/10 rounded-lg overflow-hidden;
+      }
+
+      .ntmyo-dropdown a {
+        @apply block px-6 py-3 text-nav-text hover:bg-white/10 transition-all text-sm;
       }
 
       /* Mobile styles */
@@ -47,7 +51,7 @@
         }
 
         .ntmyo-dropdown {
-          @apply static w-full shadow-none pl-4 opacity-100 visible hidden;
+          @apply static w-full shadow-none pl-4 opacity-100 visible hidden border-0;
         }
 
         .group:hover > .ntmyo-dropdown {
@@ -58,11 +62,27 @@
       /* Desktop styles */
       @media (min-width: 1024px) {
         .ntmyo-nav > ul > li > .ntmyo-dropdown {
-          @apply absolute left-0 top-full;
+          @apply absolute left-0 top-full mt-1;
         }
 
         .group:hover > .ntmyo-dropdown {
           @apply opacity-100 visible;
+        }
+
+        .ntmyo-dropdown.mega-menu {
+          @apply left-1/2 -translate-x-1/2 w-[800px] p-6 grid grid-cols-3 gap-8;
+        }
+
+        .mega-menu .menu-section {
+          @apply space-y-4;
+        }
+
+        .mega-menu .menu-section h3 {
+          @apply text-accent font-semibold text-lg mb-4 pb-2 border-b border-white/10;
+        }
+
+        .mega-menu .menu-section .sub-menu {
+          @apply space-y-1;
         }
       }
 
@@ -376,7 +396,15 @@
           </div>
         </div>
 
-        <!-- Slider navigation -->
+        <!-- Slider navigation arrows -->
+        <button class="prev-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="next-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Slider dots -->
         <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex gap-2">
           <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-colors"></button>
           <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-colors"></button>
@@ -388,52 +416,64 @@
     <!-- Yeni eklenen bölüm -->
     <section class="mt-8 py-12 bg-nav-bg text-white">
       <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-        <div>
-          <i class="fas fa-bullhorn text-4xl mb-4"></i>
+        <a href="#" class="group bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all transform hover:-translate-y-1 duration-300">
+          <i class="fas fa-bullhorn text-4xl mb-4 text-accent group-hover:scale-110 transition-transform"></i>
           <h3 class="text-xl font-semibold mb-2">Duyurular</h3>
-          <p class="text-sm">Meslek Yüksekokulumuz Duyurular Sayfası</p>
-        </div>
-        <div>
-          <i class="fas fa-users text-4xl mb-4"></i>
+          <p class="text-sm text-white/70">Meslek Yüksekokulumuz Duyurular Sayfası</p>
+        </a>
+        <a href="#" class="group bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all transform hover:-translate-y-1 duration-300">
+          <i class="fas fa-users text-4xl mb-4 text-accent group-hover:scale-110 transition-transform"></i>
           <h3 class="text-xl font-semibold mb-2">Akademik Personel</h3>
-          <p class="text-sm">Akademik personellerimiz</p>
-        </div>
-        <div>
-          <i class="fas fa-cogs text-4xl mb-4"></i>
+          <p class="text-sm text-white/70">Akademik personellerimiz</p>
+        </a>
+        <a href="#" class="group bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all transform hover:-translate-y-1 duration-300">
+          <i class="fas fa-cogs text-4xl mb-4 text-accent group-hover:scale-110 transition-transform"></i>
           <h3 class="text-xl font-semibold mb-2">İşyeri Eğitimi Portalı</h3>
-          <p class="text-sm">İşyeri Eğitimi Uygulaması & İntorna Yazılımı</p>
-        </div>
-        <div>
-          <i class="fas fa-graduation-cap text-4xl mb-4"></i>
+          <p class="text-sm text-white/70">İşyeri Eğitimi Uygulaması & İntorna Yazılımı</p>
+        </a>
+        <a href="#" class="group bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all transform hover:-translate-y-1 duration-300">
+          <i class="fas fa-graduation-cap text-4xl mb-4 text-accent group-hover:scale-110 transition-transform"></i>
           <h3 class="text-xl font-semibold mb-2">Mezun Portalı</h3>
-          <p class="text-sm">Mezun takip sistemi</p>
-        </div>
-        <div>
-          <i class="fas fa-user-plus text-4xl mb-4"></i>
+          <p class="text-sm text-white/70">Mezun takip sistemi</p>
+        </a>
+        <a href="#" class="group bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all transform hover:-translate-y-1 duration-300">
+          <i class="fas fa-user-plus text-4xl mb-4 text-accent group-hover:scale-110 transition-transform"></i>
           <h3 class="text-xl font-semibold mb-2">Aday Öğrenci</h3>
-          <p class="text-sm">Aday Öğrenci</p>
-        </div>
-        <div>
-          <i class="fas fa-certificate text-4xl mb-4"></i>
+          <p class="text-sm text-white/70">Aday Öğrenci</p>
+        </a>
+        <a href="#" class="group bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all transform hover:-translate-y-1 duration-300">
+          <i class="fas fa-certificate text-4xl mb-4 text-accent group-hover:scale-110 transition-transform"></i>
           <h3 class="text-xl font-semibold mb-2">TS EN ISO 9001:2015</h3>
-          <p class="text-sm">TS EN ISO 9001:2015 Kalite Belgesi</p>
-        </div>
-        <div>
-          <i class="fas fa-comments text-4xl mb-4"></i>
+          <p class="text-sm text-white/70">TS EN ISO 9001:2015 Kalite Belgesi</p>
+        </a>
+        <a href="#" class="group bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all transform hover:-translate-y-1 duration-300">
+          <i class="fas fa-comments text-4xl mb-4 text-accent group-hover:scale-110 transition-transform"></i>
           <h3 class="text-xl font-semibold mb-2">GİMER</h3>
-          <p class="text-sm">Bilgi Talebi & İstek & Memnuniyet & Öneri & Şikayet</p>
-        </div>
-        <div>
-          <i class="fas fa-info-circle text-4xl mb-4"></i>
+          <p class="text-sm text-white/70">Bilgi Talebi & İstek & Memnuniyet & Öneri & Şikayet</p>
+        </a>
+        <a href="#" class="group bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all transform hover:-translate-y-1 duration-300">
+          <i class="fas fa-info-circle text-4xl mb-4 text-accent group-hover:scale-110 transition-transform"></i>
           <h3 class="text-xl font-semibold mb-2">E-Kayıt</h3>
-          <p class="text-sm">Öğrenci Giriş Ekranı</p>
-        </div>
+          <p class="text-sm text-white/70">Öğrenci Giriş Ekranı</p>
+        </a>
       </div>
     </section>
 
     <!-- Slider JavaScript -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // Mobil menü toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        menuBtn.addEventListener('click', () => {
+          mobileNav.classList.toggle('hidden');
+          const icon = menuBtn.querySelector('i');
+          icon.classList.toggle('fa-bars');
+          icon.classList.toggle('fa-times');
+        });
+
+        // Slider functionality
         const sliderItems = document.querySelectorAll('.slider-item');
         const dots = document.querySelectorAll('.slider-dot');
         let currentSlide = 0;
@@ -443,26 +483,33 @@
         dots[0].classList.add('bg-white');
 
         function showSlide(index) {
-          // Hide all slides
           sliderItems.forEach(item => {
             item.classList.remove('opacity-100');
             item.classList.add('opacity-0');
           });
           
-          // Remove active state from all dots
           dots.forEach(dot => {
             dot.classList.remove('bg-white');
             dot.classList.add('bg-white/50');
           });
 
-          // Show current slide
           sliderItems[index].classList.remove('opacity-0');
           sliderItems[index].classList.add('opacity-100');
           
-          // Activate current dot
           dots[index].classList.remove('bg-white/50');
           dots[index].classList.add('bg-white');
         }
+
+        // Previous and Next buttons
+        document.querySelector('.prev-btn').addEventListener('click', () => {
+          currentSlide = (currentSlide - 1 + sliderItems.length) % sliderItems.length;
+          showSlide(currentSlide);
+        });
+
+        document.querySelector('.next-btn').addEventListener('click', () => {
+          currentSlide = (currentSlide + 1) % sliderItems.length;
+          showSlide(currentSlide);
+        });
 
         // Auto slide
         setInterval(() => {
