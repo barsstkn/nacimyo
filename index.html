@@ -114,6 +114,12 @@
       /* Mobile styles */
       @media (max-width: 1024px) {
         .header-main {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 1000;
+          background-color: #1a365d;
           position: relative;
         }
 
@@ -136,8 +142,14 @@
           padding-left: 1rem;
         }
 
-        /* Mobil menü düzenlemesi */
         .ntmyo-nav {
+          position: fixed;
+          top: 100px;
+          left: 0;
+          width: 100%;
+          height: calc(100vh - 100px);
+          background-color: #1a365d;
+          overflow-y: auto;
           position: fixed;
           top: 100px;
           left: 0;
@@ -148,14 +160,20 @@
           display: none;
           transform: translateX(-100%);
           transition: transform 0.3s ease-in-out;
+          display: none;
+          z-index: 999;
         }
 
         .ntmyo-nav.active {
           display: block;
           transform: translateX(0);
+          display: block;
         }
 
         .ntmyo-nav > ul {
+          display: flex;
+          flex-direction: column;
+          padding: 1rem;
           display: flex;
           flex-direction: column;
           padding: 1rem;
@@ -165,9 +183,17 @@
         .ntmyo-nav > ul > li {
           width: 100%;
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          width: 100%;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .ntmyo-nav > ul > li > a {
+          padding: 1rem;
+          font-size: 0.875rem;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
           padding: 0.75rem 1rem;
           font-size: 0.875rem;
           width: 100%;
@@ -184,10 +210,21 @@
           margin-top: 0;
           background-color: rgba(255, 255, 255, 0.05);
           display: none;
+          position: static;
+          width: 100%;
+          box-shadow: none;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          margin-top: 0;
+          background-color: rgba(255, 255, 255, 0.05);
+          display: none;
           transform: none !important;
         }
 
         .ntmyo-dropdown.mega-menu {
+          width: 100%;
+          padding: 1rem;
+          grid-template-columns: 1fr;
+          gap: 1rem;
           width: 100%;
           padding: 1rem;
           display: grid;
@@ -281,6 +318,27 @@
       /* Custom shadows */
       .custom-shadow {
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      /* Slider section styles */
+      section.mt-[135px] {
+        margin-top: 100px;
+        background-color: #1a365d;
+      }
+
+      .slider-container {
+        background-color: #1a365d;
+      }
+
+      .slider-item {
+        background-color: #1a365d;
+      }
+
+      .slider-item img {
+        max-height: calc(100vh - 100px);
+        object-fit: contain;
+        width: auto;
+        margin: 0 auto;
       }
     </style>
   </head>
@@ -640,7 +698,6 @@
         menuBtn.addEventListener('click', () => {
           mobileNav.classList.toggle('hidden');
           mobileNav.classList.toggle('active');
-          document.body.classList.toggle('overflow-hidden');
           const icon = menuBtn.querySelector('i');
           icon.classList.toggle('fa-bars');
           icon.classList.toggle('fa-times');
@@ -662,16 +719,27 @@
                 
                 // Diğer açık menüleri kapat
                 document.querySelectorAll('.group').forEach(group => {
-                  if (group !== parent) {
+                  if (group !== parent && group.classList.contains('active')) {
                     group.classList.remove('active');
                   }
                 });
                 
+                // Toggle current menu
                 parent.classList.toggle('active');
               });
             }
           });
         }
+
+        // Sayfa dışına tıklandığında menüyü kapat
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('.ntmyo-nav') && !e.target.closest('#menuBtn')) {
+            mobileNav.classList.remove('active');
+            mobileNav.classList.add('hidden');
+            menuBtn.querySelector('i').classList.remove('fa-times');
+            menuBtn.querySelector('i').classList.add('fa-bars');
+          }
+        });
 
         // Masaüstünde dropdown menüleri kapat
         document.addEventListener('click', (e) => {
@@ -698,11 +766,12 @@
                 
                 // Diğer açık menüleri kapat
                 document.querySelectorAll('.group').forEach(group => {
-                  if (group !== parent) {
+                  if (group !== parent && group.classList.contains('active')) {
                     group.classList.remove('active');
                   }
                 });
                 
+                // Toggle current menu
                 parent.classList.toggle('active');
               });
             }
