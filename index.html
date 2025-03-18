@@ -48,13 +48,18 @@
       }
 
       .ntmyo-dropdown.mega-menu {
-        width: 800px;
-        left: 0;
-        transform: translateY(10px);
+        width: auto;
+        min-width: 800px;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
         padding: 1.5rem;
         display: none;
         grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        gap: 1rem;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: fixed; /* Eklenen satır */
+        margin-top: 1rem; /* Eklenen satır */
       }
 
       /* Sağdaki menüler için özel stil */
@@ -286,17 +291,23 @@
 
         .ntmyo-dropdown.mega-menu {
           display: none;
-          width: 800px;
-          left: 0;
-          transform: translateY(10px);
+          width: auto;
+          min-width: 800px;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
           padding: 1.5rem;
           grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
+          gap: 1rem;
+          max-height: 80vh;
+          overflow-y: auto;
+          position: fixed; /* Eklenen satır */
+          margin-top: 1rem; /* Eklenen satır */
         }
 
         .align-right .ntmyo-dropdown.mega-menu {
           left: auto;
           right: 0;
+          transform: translateY(10px);
         }
 
         .group:hover .ntmyo-dropdown,
@@ -340,6 +351,25 @@
         object-fit: contain;
         width: auto;
         margin: 0 auto;
+      }
+
+      /* Hover durumunda transform düzeltmesi */
+      .group:hover .ntmyo-dropdown.mega-menu {
+        transform: translateX(-50%) translateY(0);  /* Merkezdeki menüler için */
+      }
+
+      .align-right.group:hover .ntmyo-dropdown.mega-menu {
+        transform: translateY(0);  /* Sağdaki menüler için */
+      }
+
+      /* İlk menü öğesi için özel stil */
+      .ntmyo-nav > ul > li:first-child .ntmyo-dropdown.mega-menu {
+        left: 0;
+        transform: translateX(0) translateY(10px);
+      }
+
+      .ntmyo-nav > ul > li:first-child:hover .ntmyo-dropdown.mega-menu {
+        transform: translateX(0) translateY(0);
       }
     </style>
   </head>
@@ -432,16 +462,47 @@
                     <h3>GIDA İŞLEME BÖLÜMÜ</h3>
                     <div class="sub-menu">
                       <a href="#">UN VE UNLU MAMÜLLER TEKNOLOJİSİ</a>
-                      <a href="#">GIDA TEKNOLOJİSİ </a>
+                      <a href="#">GIDA TEKNOLOJİSİ</a>
                       <a href="#">GIDA KALİTE KONTROLÜ VE ANALİZİ</a>
                     </div>
                   </div>
                   <div class="menu-section">
-                    <h3>GIDA İŞLEME BÖLÜMÜ</h3>
+                    <h3>TEKSTİL, GİYİM, AYAKKABI VE DERİ</h3>
                     <div class="sub-menu">
-                      <a href="#">UN VE UNLU MAMÜLLER TEKNOLOJİSİ</a>
-                      <a href="#">GIDA TEKNOLOJİSİ </a>
-                      <a href="#">GIDA KALİTE KONTROLÜ VE ANALİZİ</a>
+                      <a href="#">AYAKKABI TASARIM VE ÜRETİMİ</a>
+                      <a href="#">GİYİM ÜRETİM TEKNOLOJİSİ</a>
+                      <a href="#">TEKSTİL TEKNOLOJİSİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>KİMYA VE KİMYASAL İŞLEME TEKNOLOJİSİ</h3>
+                    <div class="sub-menu">
+                      <a href="#">KİMYA TEKNOLOJİSİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>ELEKTRONİK VE OTOMASYON</h3>
+                    <div class="sub-menu">
+                      <a href="#">KONTROL VE OTOMASYON</a>
+                      <a href="#">MEKATRONİK</a>
+                      <a href="#">RADYO VE TELEVİZYON TEKNOLOJİSİ</a>
+                      <a href="#">ELEKTRONİK HABERLEŞME</a>
+                      <a href="#">ELEKTRONİK TEKNOLOJİSİ</a>
+                      <a href="#">BİYOMEDİKAL CİHAZ TEKNOLOJİSİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>ELEKTRİK VE ENERJİ</h3>
+                    <div class="sub-menu">
+                      <a href="#">DOĞALGAZ VE TESİSAT TEKNOLOJİSİ</a>
+                      <a href="#">ELEKTRİK</a>
+                      <a href="#">İKLİMLENDİRME VE SOĞUTMA TEKNOLOJİSİ</a>
+                    </div>
+                  </div>
+                  <div class="menu-section">
+                    <h3>MOTORLU ARAÇLAR VE ULAŞTIRMA TEKNOLOJİSİ</h3>
+                    <div class="sub-menu">
+                      <a href="#">OTOMOTİV TEKNOLOJİSİ</a>
                     </div>
                   </div>
                 </div>
